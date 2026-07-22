@@ -251,7 +251,7 @@
 /* ---------------------------------------------------------------------------
  | Tables
  | --------------------------------------------------------------------------- */
-.fi-ta-ctn { overflow: hidden; }
+.fi-ta-ctn:not(.fi-ta-ctn-with-header) { overflow: hidden; }
 
 .fi-ta-header-ctn,
 .fi-ta-table thead {
