@@ -1,0 +1,44 @@
+/*
+ * Dracula theme — dark-only. Plain CSS using the official Dracula palette
+ * (hard-coded hex, independent of the Filament color variables).
+ * https://draculatheme.com/contribute
+ */
+
+.dark .fi-body,
+.dark.fi-body {
+    background-color: #282a36 !important;
+}
+
+.dark .fi-sidebar,
+.dark .fi-topbar,
+.dark .fi-topbar > nav {
+    background-color: #21222c !important;
+}
+
+.dark .fi-section,
+.dark .fi-wi-stats-overview-stat,
+.dark .fi-ta-ctn,
+.dark .fi-dropdown-panel,
+.dark .fi-modal-window {
+    background-color: #21222c !important;
+    border: 1px solid #44475a !important;
+}
+
+.dark .fi-input-wrp,
+.dark .fi-input,
+.dark .fi-select-input,
+.dark .fi-fo-textarea textarea {
+    background-color: #282a36 !important;
+    border-color: #44475a !important;
+}
+
+.dark .fi-topbar-item.fi-active .fi-topbar-item-btn,
+.dark .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background-color: #44475a !important;
+    color: #f8f8f2 !important;
+}
+
+.dark .fi-ta-header-cell,
+.dark .fi-ta-row {
+    border-color: #44475a !important;
+}

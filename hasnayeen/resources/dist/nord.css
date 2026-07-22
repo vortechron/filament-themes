@@ -1,0 +1,66 @@
+/*
+ * Nord theme — plain CSS for Filament v5.
+ * Filament v5 exposes colors as full values in CSS variables
+ * (e.g. --primary-500: oklch(...)), so they are used directly — NOT wrapped
+ * in rgb(). `secondary` is not a default Filament color, so we lean on --gray-*.
+ */
+
+.fi-body {
+    background-image: linear-gradient(
+        to right,
+        var(--primary-100),
+        var(--gray-100)
+    );
+}
+
+.dark .fi-body {
+    background-image: linear-gradient(
+        to right,
+        var(--gray-900),
+        var(--gray-950)
+    );
+}
+
+.fi-topbar > nav {
+    max-width: 80rem;
+    margin-inline: auto;
+    background-image: linear-gradient(
+        to right,
+        var(--primary-100),
+        var(--gray-100)
+    );
+    box-shadow: none !important;
+}
+
+.dark .fi-topbar > nav {
+    background: transparent !important;
+}
+
+.fi-section,
+.fi-wi-stats-overview-stat,
+.fi-ta-ctn,
+.fi-dropdown-panel {
+    border: 1px solid transparent;
+    background:
+        linear-gradient(var(--gray-50), var(--gray-50)) padding-box,
+        linear-gradient(to right, var(--primary-500), var(--info-500))
+            border-box;
+}
+
+.dark .fi-section,
+.dark .fi-wi-stats-overview-stat,
+.dark .fi-ta-ctn,
+.dark .fi-dropdown-panel {
+    background:
+        linear-gradient(var(--gray-900), var(--gray-900)) padding-box,
+        linear-gradient(to right, var(--primary-800), var(--info-800))
+            border-box;
+}
+
+.fi-topbar-item.fi-active .fi-topbar-item-btn {
+    background-color: var(--primary-500);
+}
+
+.fi-topbar-item.fi-active .fi-topbar-item-btn:hover {
+    background-color: var(--primary-400);
+}

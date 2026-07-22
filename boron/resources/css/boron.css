@@ -1,0 +1,408 @@
+/*
+ | ===========================================================================
+ | Boron theme for Filament v5  —  SOURCE OF TRUTH
+ | ===========================================================================
+ | A neubrutalist admin look ported from the Coderthemes "Boron" template:
+ |   - Lexend typeface (BoronPlugin registers ->font('Lexend'))
+ |   - warm cream page (#fffbf4), white card surfaces
+ |   - sage-green accent (#669776), dark-slate primary (#313a46)
+ |   - crisp dark 1px borders + SOLID hard offset card shadows (5px 7px 0)
+ |   - flat solid buttons (fill + border, no ghost shadow)
+ |   - black sidebar with cream active pills
+ |
+ | This file is the reusable, GENERIC Boron chrome. It styles only Filament's
+ | own classes (.fi-*). App-specific components live in the host app's theme,
+ | which @imports this file and then adds its own rules.
+ |
+ | Everything is driven by --boron-* CSS variables so a host app can override
+ | any token (e.g. a black topbar, different accent) without forking this file.
+ |
+ | ---------------------------------------------------------------------------
+ | USAGE — the HOST APP's theme file owns the @import of Filament's base theme
+ | and the @source globs (their relative paths must resolve from the app, not
+ | from this package). A host theme looks like:
+ |
+ |   @import '../../../../vendor/filament/filament/resources/css/theme.css';
+ |   @import '../../../../vendor/vortechron/filament-boron/resources/css/boron.css';
+ |   @source '...';   // app view globs
+ |   // ...optional app-specific overrides...
+ |
+ | This file therefore contains ONLY Boron rules + tokens — no @import, no
+ | @source — so it composes cleanly no matter where it is installed/symlinked.
+ | ---------------------------------------------------------------------------
+ */
+
+/* ---------------------------------------------------------------------------
+ | Design tokens
+ | --------------------------------------------------------------------------- */
+:root {
+    /* Brand */
+    --boron-primary: #313a46;   /* dark slate */
+    --boron-secondary: #669776; /* sage green — the Boron accent */
+    --boron-success: #70bb63;
+    --boron-info: #60addf;
+    --boron-warning: #ebb751;
+    --boron-danger: #ed6060;
+
+    /* Surfaces — light */
+    --boron-body-bg: #fffbf4;   /* warm cream page */
+    --boron-card-bg: #ffffff;
+    --boron-topbar-bg: #fffbf4;
+    --boron-border: #343a40;      /* DARK crisp border on light cards */
+    --boron-border-soft: #e7e9eb; /* soft divider (table rows, subtle lines) */
+    --boron-ink: #313a46;         /* headings / strong text */
+    --boron-body-color: #4c4c5c;
+    --boron-muted: #8a969c;
+    --boron-subtle-bg: #f6f7fb;   /* table headers, inset panels */
+
+    /* Sidebar — Boron dark menu is pure black */
+    --boron-sidebar-bg: #000000;
+    --boron-sidebar-color: #97aac1;
+    --boron-sidebar-muted: #6c7a8c;
+    --boron-sidebar-active-bg: #fffbf4;
+    --boron-sidebar-active-color: #000000;
+
+    /* Shape + shadow (the Boron signature) — SOLID opaque offset, not blurred */
+    --boron-radius: 0.3rem;
+    --boron-radius-lg: 0.6rem;
+    --boron-card-shadow: 5px 7px 0 #6c757d;
+    --boron-card-shadow-hover: 6px 9px 0 #6c757d;
+}
+
+.dark {
+    --boron-body-bg: #17181e;
+    --boron-card-bg: #1e1f27;
+    --boron-topbar-bg: #000000;
+    --boron-border: #464a5c;
+    --boron-border-soft: #2e3040;
+    --boron-ink: #e2eeff;
+    --boron-body-color: #aab8c5;
+    --boron-muted: #8391a2;
+    --boron-subtle-bg: rgb(255 255 255 / 0.03);
+
+    --boron-sidebar-bg: #1e1f27;
+    --boron-sidebar-color: #97aac1;
+    --boron-sidebar-active-bg: #2a2c33;
+    --boron-sidebar-active-color: #e2eeff;
+
+    --boron-card-shadow: 5px 7px 0 #000000;
+    --boron-card-shadow-hover: 6px 9px 0 #000000;
+}
+
+/* ---------------------------------------------------------------------------
+ | Shell + typography
+ | --------------------------------------------------------------------------- */
+.fi-body {
+    font-family: 'Lexend', ui-sans-serif, system-ui, sans-serif;
+    font-size: 0.925rem;
+    background: var(--boron-body-bg);
+    color: var(--boron-body-color);
+}
+
+.fi-main { min-width: 0; }
+.fi-page-content { gap: 1.5rem; }
+
+.fi-header-heading,
+.fi-section-header-heading,
+.fi-modal-heading {
+    font-family: 'Lexend', sans-serif;
+    color: var(--boron-ink);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+}
+.fi-header-heading { font-size: 1.6rem; line-height: 1.2; }
+
+/* ---------------------------------------------------------------------------
+ | Topbar
+ | --------------------------------------------------------------------------- */
+.fi-topbar {
+    min-height: 4.75rem;
+    background: var(--boron-topbar-bg);
+    border-bottom: 1px solid var(--boron-border-soft);
+    box-shadow: none;
+}
+.fi-topbar > nav {
+    background: var(--boron-topbar-bg);
+    border-bottom: 1px solid var(--boron-border-soft);
+    box-shadow: none;
+}
+
+/* ---------------------------------------------------------------------------
+ | Sidebar — black, muted labels, cream active pill
+ | --------------------------------------------------------------------------- */
+.fi-sidebar {
+    background: var(--boron-sidebar-bg);
+    box-shadow: none;
+}
+.fi-sidebar .fi-sidebar-header,
+.fi-sidebar .fi-sidebar-nav,
+.fi-sidebar .fi-sidebar-footer {
+    background: transparent;
+}
+.fi-sidebar-header {
+    min-height: 4.75rem;
+    border-bottom: 1px solid rgb(255 255 255 / 0.06);
+}
+.fi-sidebar-nav { padding: 1rem 0.85rem 1.25rem; }
+.fi-sidebar-nav-groups { gap: 1rem; }
+
+.fi-sidebar-group-label {
+    color: var(--boron-sidebar-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.fi-sidebar-item-btn {
+    min-height: 2.7rem;
+    gap: 0.75rem;
+    border: 1px solid transparent;
+    border-radius: var(--boron-radius);
+    color: var(--boron-sidebar-color);
+    font-size: 0.95rem;
+    transition: background 160ms ease, color 160ms ease;
+}
+.fi-sidebar-item-icon { color: var(--boron-sidebar-color); }
+
+.fi-sidebar-item-btn:hover {
+    background: var(--boron-sidebar-active-bg);
+    color: var(--boron-sidebar-active-color);
+}
+.fi-sidebar-item-btn:hover .fi-sidebar-item-icon { color: var(--boron-sidebar-active-color); }
+
+.fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background: var(--boron-sidebar-active-bg);
+    color: var(--boron-sidebar-active-color);
+    font-weight: 500;
+    box-shadow: none;
+}
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon { color: var(--boron-sidebar-active-color); }
+
+/* The label text sits in its own span with its own colour — force it too,
+   otherwise Filament's base grey overrides the inherited sidebar colour. */
+.fi-sidebar-item-label {
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--boron-sidebar-color);
+}
+.fi-sidebar-item-btn:hover .fi-sidebar-item-label,
+.fi-sidebar-item.fi-active .fi-sidebar-item-label { color: var(--boron-sidebar-active-color); }
+
+/* Collapsed sidebar keeps the black background */
+@media (min-width: 64rem) {
+    .fi-sidebar:not(.fi-sidebar-open) {
+        width: var(--collapsed-sidebar-width);
+        min-width: var(--collapsed-sidebar-width);
+        max-width: var(--collapsed-sidebar-width);
+    }
+}
+
+/* ---------------------------------------------------------------------------
+ | Cards / sections / tables / modals / dropdowns — hard offset shadow
+ | --------------------------------------------------------------------------- */
+.fi-section,
+.fi-ta-ctn,
+.fi-wi-stats-overview-stat,
+.fi-sc-wizard,
+.fi-modal-window,
+.fi-dropdown-panel {
+    border: 1px solid var(--boron-border);
+    border-radius: var(--boron-radius);
+    background: var(--boron-card-bg);
+    box-shadow: var(--boron-card-shadow);
+}
+
+.fi-wi-stats-overview-stat { transition: box-shadow 150ms ease, transform 150ms ease; }
+.fi-wi-stats-overview-stat:hover {
+    box-shadow: var(--boron-card-shadow-hover);
+    transform: translate(-1px, -1px);
+}
+
+.fi-section-header { padding: 1.15rem 1.5rem 0.9rem; }
+.fi-section-content { padding: 1.25rem 1.5rem; }
+.fi-section-header-heading { color: var(--boron-ink); font-size: 1.05rem; }
+.fi-section-header-description { color: var(--boron-muted); line-height: 1.6; }
+
+.fi-modal-window { border-radius: var(--boron-radius); }
+.fi-modal-close-overlay { background: rgb(49 58 70 / 0.5); }
+
+/* Dropdown panels */
+.fi-dropdown-panel { box-shadow: var(--boron-card-shadow); padding: 0.4rem; }
+.fi-dropdown-list-item { border-radius: var(--boron-radius); }
+.fi-dropdown-list-item:hover { background: rgb(102 151 118 / 0.1); }
+.fi-dropdown-header {
+    color: var(--boron-muted);
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+}
+/* Tall generic dropdowns scroll instead of growing beyond the viewport. */
+.fi-dropdown-panel {
+    max-height: calc(100vh - 8rem);
+    overflow-y: auto;
+}
+.fi-ta-filters-dropdown .fi-dropdown-panel {
+    max-height: min(20rem, calc(100dvh - 2rem));
+}
+.fi-dropdown-panel .fi-ta-filters { padding: 0.6rem 0.75rem; }
+
+/* ---------------------------------------------------------------------------
+ | Tables
+ | --------------------------------------------------------------------------- */
+.fi-ta-ctn { overflow: hidden; }
+
+.fi-ta-header-ctn,
+.fi-ta-table thead {
+    background: var(--boron-subtle-bg);
+    border-bottom: 1px solid var(--boron-border-soft);
+}
+.fi-ta-header-toolbar { padding: 1rem 1.15rem; }
+
+.fi-ta-header-cell,
+.fi-ta-header-cell-sort-btn {
+    color: var(--boron-muted);
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: uppercase;
+}
+
+.fi-ta-row { border-bottom: 1px solid var(--boron-border-soft); transition: background 140ms ease; }
+.fi-ta-row:hover { background: rgb(102 151 118 / 0.06); }
+.dark .fi-ta-row:hover { background: rgb(102 151 118 / 0.1); }
+.fi-ta-cell { padding-block: 0.85rem; }
+
+.fi-pagination {
+    border-top: 1px solid var(--boron-border-soft);
+    background: var(--boron-subtle-bg);
+}
+
+.fi-ta-empty-state-icon-bg {
+    background: rgb(102 151 118 / 0.12);
+    color: var(--boron-secondary);
+}
+
+/* Content-grid record cards get the Boron surface (host app cards can rely on
+   this wrapper being white + bordered + shadowed). */
+.fi-ta-content-grid .fi-ta-record {
+    border: 1px solid var(--boron-border);
+    border-radius: var(--boron-radius);
+    background: var(--boron-card-bg);
+    box-shadow: var(--boron-card-shadow);
+    overflow: hidden;
+    transition: box-shadow 150ms ease, transform 150ms ease;
+}
+.fi-ta-content-grid .fi-ta-record:hover {
+    box-shadow: var(--boron-card-shadow-hover);
+    transform: translate(-1px, -1px);
+}
+
+/* ---------------------------------------------------------------------------
+ | Buttons — flat, solid Boron variants (fill + 1px border, NO ghost shadow —
+ | that belongs on cards, not buttons).
+ | --------------------------------------------------------------------------- */
+.fi-btn {
+    border-radius: var(--boron-radius);
+    font-weight: 500;
+    box-shadow: none;
+    transition: background 140ms ease, border-color 140ms ease, filter 140ms ease;
+}
+
+.fi-btn.fi-color-primary {
+    background: var(--boron-secondary);
+    border: 1px solid var(--boron-secondary);
+    color: #fff;
+}
+.fi-btn.fi-color-primary:hover:not([disabled]) { background: #5c896b; border-color: #5c896b; }
+
+.fi-btn.fi-color-success { background: var(--boron-success); border: 1px solid var(--boron-success); color: #fff; }
+.fi-btn.fi-color-success:hover:not([disabled]) { filter: brightness(0.94); }
+
+.fi-btn.fi-color-info { background: var(--boron-info); border: 1px solid var(--boron-info); color: #fff; }
+.fi-btn.fi-color-info:hover:not([disabled]) { filter: brightness(0.94); }
+
+.fi-btn.fi-color-warning { background: var(--boron-warning); border: 1px solid var(--boron-warning); color: #fff; }
+.fi-btn.fi-color-warning:hover:not([disabled]) { filter: brightness(0.94); }
+
+.fi-btn.fi-color-danger { background: var(--boron-danger); border: 1px solid var(--boron-danger); color: #fff; }
+.fi-btn.fi-color-danger:hover:not([disabled]) { filter: brightness(0.94); }
+
+/* Gray / neutral solid → dark slate (like Boron btn-dark) */
+.fi-btn.fi-color-gray:not(.fi-outlined) {
+    background: var(--boron-primary); border: 1px solid var(--boron-primary); color: #fff;
+}
+.fi-btn.fi-color-gray:not(.fi-outlined):hover:not([disabled]) { filter: brightness(1.15); }
+
+/* Outlined / ghost buttons (e.g. Cancel): crisp border, card fill, dark text */
+.fi-btn.fi-outlined {
+    border: 1px solid var(--boron-border);
+    color: var(--boron-ink);
+    background: var(--boron-card-bg);
+    box-shadow: none;
+}
+.fi-btn.fi-outlined:hover:not([disabled]) {
+    background: rgb(102 151 118 / 0.08);
+    border-color: var(--boron-secondary);
+    color: var(--boron-ink);
+}
+.dark .fi-btn.fi-outlined { color: var(--boron-ink); }
+
+/* ---------------------------------------------------------------------------
+ | Inputs
+ | --------------------------------------------------------------------------- */
+.fi-input-wrp {
+    border: 1px solid var(--boron-border);
+    border-radius: var(--boron-radius);
+    background: var(--boron-card-bg);
+    box-shadow: none;
+}
+.fi-input-wrp:focus-within {
+    border-color: var(--boron-secondary);
+    box-shadow: 0 0 0 3px rgb(102 151 118 / 0.15);
+}
+.fi-input,
+.fi-select-input,
+.fi-fo-textarea textarea { border-radius: var(--boron-radius); }
+
+.fi-fo-field-label-content { color: var(--boron-ink); font-weight: 600; font-size: 0.85rem; }
+.fi-fo-field-label-required-mark { color: var(--boron-danger); }
+
+/* ---------------------------------------------------------------------------
+ | Badges + tabs
+ | --------------------------------------------------------------------------- */
+.fi-badge { border-radius: var(--boron-radius); font-weight: 700; }
+
+.fi-tabs {
+    gap: 0.35rem;
+    padding: 0.3rem;
+    border: 1px solid var(--boron-border);
+    border-radius: var(--boron-radius);
+    background: var(--boron-card-bg);
+}
+.fi-tabs-item { border-radius: var(--boron-radius); }
+.fi-tabs-item.fi-active { background: var(--boron-primary); color: #fff; }
+
+/* ---------------------------------------------------------------------------
+ | Login / simple pages
+ | --------------------------------------------------------------------------- */
+.fi-simple-layout {
+    background:
+        radial-gradient(circle at 15% 10%, rgb(102 151 118 / 0.16), transparent 24rem),
+        radial-gradient(circle at 85% 85%, rgb(96 173 223 / 0.14), transparent 26rem),
+        var(--boron-primary);
+}
+.fi-simple-main {
+    border: 1px solid var(--boron-border);
+    border-radius: var(--boron-radius-lg);
+    background: var(--boron-card-bg);
+    box-shadow: var(--boron-card-shadow);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

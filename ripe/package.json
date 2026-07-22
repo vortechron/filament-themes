@@ -1,0 +1,15 @@
+{
+  "name": "@vortechron/filament-ripe-build",
+  "version": "1.0.0",
+  "description": "Build tooling for the Stripe-dashboard inspired FilamentPHP 5 theme.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "esbuild ./resources/css/dist-entry.css --bundle --minify --outfile=./dist/theme.css",
+    "build:pretty": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./dist/theme.css",
+    "dev": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./dist/theme.css --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

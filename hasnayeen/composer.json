@@ -1,0 +1,50 @@
+{
+    "name": "vortechron/filament-hasnayeen",
+    "description": "Multi-theme switcher for FilamentPHP v5 panels — Default, Dracula, Nord and Sunset themes with a per-user Appearance page. Ported from hasnayeen/themes.",
+    "type": "library",
+    "keywords": [
+        "filament",
+        "filamentphp",
+        "theme",
+        "themes",
+        "switcher",
+        "hasnayeen",
+        "laravel",
+        "tailwind"
+    ],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Vortechron",
+            "role": "Filament 5 maintainer"
+        },
+        {
+            "name": "Hasnayeen",
+            "email": "searching.nehal@gmail.com",
+            "role": "Original author"
+        }
+    ],
+    "require": {
+        "php": "^8.2",
+        "filament/filament": "^5.0",
+        "spatie/laravel-package-tools": "^1.15"
+    },
+    "autoload": {
+        "psr-4": {
+            "Hasnayeen\\Themes\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Hasnayeen\\Themes\\ThemesServiceProvider"
+            ]
+        }
+    },
+    "support": {
+        "issues": "https://github.com/vortechron/filament-themes/issues",
+        "source": "https://github.com/vortechron/filament-themes/tree/main/hasnayeen"
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}

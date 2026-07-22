@@ -1,0 +1,8 @@
+/vendor/
+/*/vendor/
+/*/node_modules/
+composer.lock
+/*/composer.lock
+.DS_Store
+/*/.DS_Store
+
