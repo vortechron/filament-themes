@@ -22,16 +22,16 @@
     "autoload": {
         "psr-4": {
             "Vortechron\\FilamentBoron\\": "boron/src/",
-            "Hasnayeen\\Themes\\": "hasnayeen/src/",
-            "Ripe\\Theme\\": "ripe/src/"
+            "Vortechron\\FilamentHasnayeen\\": "hasnayeen/src/",
+            "Vortechron\\FilamentRipe\\": "ripe/src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Vortechron\\FilamentBoron\\FilamentBoronServiceProvider",
-                "Hasnayeen\\Themes\\ThemesServiceProvider",
-                "Ripe\\Theme\\RipeThemeServiceProvider"
+                "Vortechron\\FilamentBoron\\BoronServiceProvider",
+                "Vortechron\\FilamentHasnayeen\\HasnayeenServiceProvider",
+                "Vortechron\\FilamentRipe\\RipeServiceProvider"
             ]
         }
     },
@@ -42,4 +42,3 @@
     "minimum-stability": "stable",
     "prefer-stable": true
 }
-

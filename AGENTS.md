@@ -27,7 +27,15 @@ panel must register only one visual theme.
 
 - Keep each subdirectory installable on its own; update both its manifest and
   README when its install contract changes.
-- Keep generated production CSS in `resources/dist/` or `dist/` committed.
+- Use `vortechron/filament-{theme}` for the Composer package name.
+- Use `Vortechron\Filament{Theme}` for the root PHP namespace.
+- Name public entry points `{Theme}Plugin` and `{Theme}ServiceProvider`.
+- Use `vortechron-{theme}` for the Filament plugin ID and
+  `vortechron/filament-{theme}` for the Filament asset package key.
+- Add `declare(strict_types=1);` to source PHP classes and follow PSR-4 exactly.
+- Use `spatie/laravel-package-tools` for package service providers.
+- Keep generated production CSS in `resources/dist/` committed. Source-only
+  CSS may remain under `resources/css/` when no build step is needed.
 - Do not commit `vendor/` or `node_modules/`.
 - Do not add a frontend build step to the consuming app unless the package
   cannot ship a safe prebuilt asset.
@@ -36,7 +44,8 @@ panel must register only one visual theme.
 ## Adding a theme
 
 1. Create an independent Composer package in a new directory.
-2. Add its PSR-4 namespace and service provider to the root `composer.json`.
+2. Follow the package naming convention above, then add its PSR-4 namespace
+   and service provider to the root `composer.json`.
 3. Add it to the root theme table and document exact panel registration.
 4. Add required asset checks to `scripts/verify.sh`.
 5. Test a real Filament 5 panel in light and dark mode before release.
@@ -51,4 +60,5 @@ Run:
 
 For UI changes, also test login, dashboard, navigation, tables, forms,
 dropdowns, modals, mobile navigation, and dark mode in a real Filament 5 app.
-
+Before a release, run `./scripts/verify-integration.sh` to test all three clean
+consumer installs.

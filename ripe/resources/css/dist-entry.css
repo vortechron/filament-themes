@@ -1,5 +1,5 @@
 /*
- * Standalone build entrypoint for dist/theme.css.
+ * Standalone build entrypoint for resources/dist/theme.css.
  *
  * This is what ships as the prebuilt drop-in stylesheet. It is loaded AFTER
  * Filament's own compiled CSS in the panel, so it does NOT import Filament core

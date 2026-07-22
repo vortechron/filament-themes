@@ -23,7 +23,7 @@
  | from this package). A host theme looks like:
  |
  |   @import '../../../../vendor/filament/filament/resources/css/theme.css';
- |   @import '../../../../vendor/vortechron/filament-boron/resources/css/boron.css';
+ |   @import '../../../../vendor/vortechron/filament-boron/resources/css/theme.css';
  |   @source '...';   // app view globs
  |   // ...optional app-specific overrides...
  |

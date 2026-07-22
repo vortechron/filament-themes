@@ -11,13 +11,15 @@ cream surfaces, sage accents, a black sidebar, and hard offset shadows.
 
 ## Install
 
-Install the individual package:
+When Boron is published as an independent package, install it with:
 
 ```bash
 composer require vortechron/filament-boron
 ```
 
-If you installed the `vortechron/filament-themes` bundle, skip that command.
+For this monorepo, install the `vortechron/filament-themes` bundle as shown in
+the [root installation guide](../README.md#start-here-pick-one-theme), or use
+the root guide's local path-repository instructions to require only Boron.
 
 Register Boron in the target panel provider:
 
@@ -44,8 +46,8 @@ No npm or Vite change is required.
 
 ## Options
 
-Boron sets its color palette, loads Lexend, and registers its stylesheet. Keep
-part of the panel's existing design with:
+Boron sets its color palette, loads its bundled local Lexend font, and
+registers its stylesheet. Keep part of the panel's existing design with:
 
 ```php
 BoronPlugin::make()
@@ -89,4 +91,3 @@ navigation, and both light and dark mode after each Filament major upgrade.
 ## License
 
 MIT.
-

@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Vortechron\FilamentBoron;
 
 /**
@@ -7,7 +9,7 @@ namespace Vortechron\FilamentBoron;
  * compiled stylesheet. Kept in one place so both the plugin and any consuming
  * app can reference the exact same values.
  */
-class BoronTheme
+final class BoronTheme
 {
     /**
      * Boron brand colours as hex. Filament expands each into a full palette.

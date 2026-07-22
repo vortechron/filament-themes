@@ -11,23 +11,27 @@ soft white cards, hairline borders, dense tables, and dark navy surfaces.
 
 ## Install
 
+When Ripe is published as an independent package, install it with:
+
 ```bash
 composer require vortechron/filament-ripe
 ```
 
-If you installed the `vortechron/filament-themes` bundle, skip that command.
+For this monorepo, install the `vortechron/filament-themes` bundle as shown in
+the [root installation guide](../README.md#start-here-pick-one-theme), or use
+the root guide's local path-repository instructions to require only Ripe.
 
 Register Ripe in the target panel provider:
 
 ```php
 use Filament\Panel;
-use Ripe\Theme\RipeThemePlugin;
+use Vortechron\FilamentRipe\RipePlugin;
 
 public function panel(Panel $panel): Panel
 {
     return $panel
         // ...
-        ->plugin(RipeThemePlugin::make());
+        ->plugin(RipePlugin::make());
 }
 ```
 
@@ -66,7 +70,7 @@ npm ci
 npm run build
 ```
 
-Commit the rebuilt `dist/theme.css` with every source CSS change.
+Commit the rebuilt `resources/dist/theme.css` with every source CSS change.
 
 ## Production check
 
@@ -76,4 +80,3 @@ navigation, and both light and dark mode after each Filament major upgrade.
 ## License
 
 MIT.
-

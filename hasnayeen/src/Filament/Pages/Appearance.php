@@ -2,37 +2,37 @@
 
 declare(strict_types=1);
 
-namespace Hasnayeen\Themes\Filament\Pages;
+namespace Vortechron\FilamentHasnayeen\Filament\Pages;
 
 use BackedEnum;
-use Filament\Facades\Filament;
 use Filament\Notifications\Notification;
 use Filament\Pages\Page;
 use Filament\Support\Colors\Color;
 use Filament\Support\Icons\Heroicon;
-use Hasnayeen\Themes\Contracts\Theme;
-use Hasnayeen\Themes\ThemesPlugin;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Contracts\View\View;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Collection;
+use Vortechron\FilamentHasnayeen\Contracts\Theme;
+use Vortechron\FilamentHasnayeen\HasnayeenPlugin;
+use Vortechron\FilamentHasnayeen\ThemeManager;
 
-class Themes extends Page
+class Appearance extends Page
 {
     protected static string|BackedEnum|null $navigationIcon = Heroicon::OutlinedSwatch;
 
     protected static ?string $title = 'Appearance';
 
-    protected string $view = 'themes::filament.pages.themes';
+    protected string $view = 'filament-hasnayeen::filament.pages.appearance';
 
     public function getTitle(): string|Htmlable
     {
-        return __('themes::themes.appearance');
+        return __('filament-hasnayeen::themes.appearance');
     }
 
     public function mount(): void
     {
-        abort_unless(ThemesPlugin::canView(), 403);
+        abort_unless(HasnayeenPlugin::get()->isAppearancePageVisible(), 403);
     }
 
     /**
@@ -40,21 +40,17 @@ class Themes extends Page
      */
     public function getThemes(): Collection
     {
-        return app(\Hasnayeen\Themes\Themes::class)->getThemes();
+        return $this->manager()->all();
     }
 
     public function getCurrentTheme(): Theme
     {
-        return app(\Hasnayeen\Themes\Themes::class)->getCurrentTheme();
+        return $this->manager()->current();
     }
 
     public function getColor(): ?string
     {
-        if (config('themes.mode') === 'global') {
-            return cache('theme_color');
-        }
-
-        return Filament::auth()->user()?->theme_color;
+        return $this->manager()->selectedColor();
     }
 
     /**
@@ -73,42 +69,28 @@ class Themes extends Page
             'Invalid theme color.',
         );
 
-        if (config('themes.mode') === 'global') {
-            cache(['theme_color' => $color]);
-        } else {
-            $user = Filament::auth()->user();
-            abort_unless($user, 403);
-            $user->theme_color = $color;
-            $user->save();
-        }
+        $this->manager()->saveColor($color);
 
         Notification::make()
-            ->title(__('themes::themes.primary_color_set').' '.$color.'.')
+            ->title(__('filament-hasnayeen::themes.primary_color_set').' '.$color.'.')
             ->success()
             ->send();
 
-        return $this->redirect(self::getUrl());
+        return $this->redirect(static::getUrl());
     }
 
     public function setTheme(string $theme): mixed
     {
         abort_unless($this->getThemes()->has($theme), 422, 'Invalid theme.');
 
-        if (config('themes.mode') === 'global') {
-            cache(['theme' => $theme]);
-        } else {
-            $user = Filament::auth()->user();
-            abort_unless($user, 403);
-            $user->theme = $theme;
-            $user->save();
-        }
+        $this->manager()->saveTheme($theme);
 
         Notification::make()
-            ->title(__('themes::themes.theme_set_to').' '.$theme.'.')
+            ->title(__('filament-hasnayeen::themes.theme_set_to').' '.$theme.'.')
             ->success()
             ->send();
 
-        return $this->redirect(self::getUrl());
+        return $this->redirect(static::getUrl());
     }
 
     public static function shouldRegisterNavigation(): bool
@@ -118,6 +100,11 @@ class Themes extends Page
 
     public function getFooter(): ?View
     {
-        return view('themes::filament.pages.themes-footer');
+        return view('filament-hasnayeen::filament.pages.appearance-footer');
+    }
+
+    protected function manager(): ThemeManager
+    {
+        return app(ThemeManager::class);
     }
 }

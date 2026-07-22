@@ -31,13 +31,13 @@
     },
     "autoload": {
         "psr-4": {
-            "Hasnayeen\\Themes\\": "src/"
+            "Vortechron\\FilamentHasnayeen\\": "src/"
         }
     },
     "extra": {
         "laravel": {
             "providers": [
-                "Hasnayeen\\Themes\\ThemesServiceProvider"
+                "Vortechron\\FilamentHasnayeen\\HasnayeenServiceProvider"
             ]
         }
     },

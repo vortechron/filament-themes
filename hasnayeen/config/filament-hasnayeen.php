@@ -4,12 +4,12 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Theme mode
+    | Theme storage mode
     |--------------------------------------------------------------------------
     |
     | This option determines how the theme will be set for the application.
-    | 'user' stores the selected theme on each user (requires the migration).
-    | 'global' stores a single theme for all users in the cache.
+    | "user" stores the selection on each user model. "global" stores one
+    | selection for the whole application in its configured cache store.
     |
     | Supported: "user", "global"
     |
@@ -19,10 +19,10 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Theme Icon
+    | User menu icon
     |--------------------------------------------------------------------------
     |
-    | The icon used for the "Themes" link in the user menu.
+    | The icon used for the Appearance link in the Filament user menu.
     |
     */
 
@@ -30,12 +30,26 @@ return [
 
     /*
     |--------------------------------------------------------------------------
-    | Default Theme
+    | Defaults
     |--------------------------------------------------------------------------
     */
 
     'default' => [
         'theme' => 'default',
-        'theme_color' => 'blue',
+        'color' => 'blue',
+    ],
+
+    /*
+    |--------------------------------------------------------------------------
+    | User model attributes
+    |--------------------------------------------------------------------------
+    |
+    | Change these when your user model stores the selection in custom columns.
+    |
+    */
+
+    'user_attributes' => [
+        'theme' => 'filament_theme',
+        'color' => 'filament_theme_color',
     ],
 ];

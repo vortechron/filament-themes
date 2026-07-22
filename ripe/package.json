@@ -5,9 +5,9 @@
   "license": "MIT",
   "private": true,
   "scripts": {
-    "build": "esbuild ./resources/css/dist-entry.css --bundle --minify --outfile=./dist/theme.css",
-    "build:pretty": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./dist/theme.css",
-    "dev": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./dist/theme.css --watch"
+    "build": "esbuild ./resources/css/dist-entry.css --bundle --minify --outfile=./resources/dist/theme.css",
+    "build:pretty": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./resources/dist/theme.css",
+    "dev": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./resources/dist/theme.css --watch"
   },
   "devDependencies": {
     "esbuild": "^0.25.0"

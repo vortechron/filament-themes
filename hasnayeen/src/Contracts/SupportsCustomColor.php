@@ -4,14 +4,10 @@ declare(strict_types=1);
 
 namespace Vortechron\FilamentHasnayeen\Contracts;
 
-interface Theme
+interface SupportsCustomColor
 {
-    public function name(): string;
-
-    public function stylesheetPath(): string;
-
     /**
      * @return array<string, array<int, string>|string>
      */
-    public function colors(): array;
+    public function defaultPrimaryColor(): array;
 }

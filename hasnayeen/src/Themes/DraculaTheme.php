@@ -2,27 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Hasnayeen\Themes\Themes;
+namespace Vortechron\FilamentHasnayeen\Themes;
 
-use Hasnayeen\Themes\Contracts\HasOnlyDarkMode;
-use Hasnayeen\Themes\Contracts\Theme;
+use Vortechron\FilamentHasnayeen\Contracts\DarkModeOnly;
+use Vortechron\FilamentHasnayeen\Contracts\Theme;
 
-class Dracula implements HasOnlyDarkMode, Theme
+class DraculaTheme implements DarkModeOnly, Theme
 {
-    public static function getName(): string
+    public function name(): string
     {
         return 'dracula';
     }
 
-    public static function getPath(): string
+    public function stylesheetPath(): string
     {
         return __DIR__.'/../../resources/dist/dracula.css';
     }
 
-    /**
-     * @return array<string, array<int, string>|string>
-     */
-    public function getThemeColor(): array
+    public function colors(): array
     {
         return [
             'primary' => '#9580ff',

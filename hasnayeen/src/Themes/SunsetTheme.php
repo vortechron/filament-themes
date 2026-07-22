@@ -6,19 +6,20 @@ namespace Vortechron\FilamentHasnayeen\Themes;
 
 use Filament\Support\Colors\Color;
 use Illuminate\Support\Arr;
+use Vortechron\FilamentHasnayeen\Contracts\DarkModeOnly;
 use Vortechron\FilamentHasnayeen\Contracts\SupportsCustomColor;
 use Vortechron\FilamentHasnayeen\Contracts\Theme;
 
-class DefaultTheme implements SupportsCustomColor, Theme
+class SunsetTheme implements DarkModeOnly, SupportsCustomColor, Theme
 {
     public function name(): string
     {
-        return 'default';
+        return 'sunset';
     }
 
     public function stylesheetPath(): string
     {
-        return __DIR__.'/../../resources/dist/default.css';
+        return __DIR__.'/../../resources/dist/sunset.css';
     }
 
     public function colors(): array
@@ -28,6 +29,6 @@ class DefaultTheme implements SupportsCustomColor, Theme
 
     public function defaultPrimaryColor(): array
     {
-        return ['primary' => $this->colors()['blue']];
+        return ['primary' => $this->colors()['orange']];
     }
 }

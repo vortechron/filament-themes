@@ -2,27 +2,24 @@
 
 declare(strict_types=1);
 
-namespace Hasnayeen\Themes\Themes;
+namespace Vortechron\FilamentHasnayeen\Themes;
 
 use Filament\Support\Colors\Color;
-use Hasnayeen\Themes\Contracts\Theme;
+use Vortechron\FilamentHasnayeen\Contracts\Theme;
 
-class Nord implements Theme
+class NordTheme implements Theme
 {
-    public static function getName(): string
+    public function name(): string
     {
         return 'nord';
     }
 
-    public static function getPath(): string
+    public function stylesheetPath(): string
     {
         return __DIR__.'/../../resources/dist/nord.css';
     }
 
-    /**
-     * @return array<string, array<int, string>|string>
-     */
-    public function getThemeColor(): array
+    public function colors(): array
     {
         return [
             'primary' => Color::hex('#8FBCBB'),

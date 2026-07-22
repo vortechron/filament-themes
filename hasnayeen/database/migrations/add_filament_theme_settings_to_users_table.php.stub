@@ -9,15 +9,15 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->string('theme')->nullable()->default('default');
-            $table->string('theme_color')->nullable();
+            $table->string('filament_theme')->nullable()->default('default');
+            $table->string('filament_theme_color')->nullable();
         });
     }
 
     public function down(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn(['theme', 'theme_color']);
+            $table->dropColumn(['filament_theme', 'filament_theme_color']);
         });
     }
 };

@@ -1,12 +1,12 @@
 <x-filament-panels::page>
     <section class="vft-section">
         <header class="vft-section-header">
-            <h2>{{ __('themes::themes.primary_color') }}</h2>
-            <p>{{ __('themes::themes.select_base_color') }}</p>
+            <h2>{{ __('filament-hasnayeen::themes.primary_color') }}</h2>
+            <p>{{ __('filament-hasnayeen::themes.select_base_color') }}</p>
         </header>
 
         <div class="vft-color-list">
-            @if ($this->getCurrentTheme() instanceof \Hasnayeen\Themes\Contracts\HasChangeableColor)
+            @if ($this->getCurrentTheme() instanceof \Vortechron\FilamentHasnayeen\Contracts\SupportsCustomColor)
                 @foreach ($this->getColors() as $name => $color)
                     <button
                         type="button"
@@ -26,27 +26,27 @@
                         name="custom"
                         wire:change="setColor($event.target.value)"
                     >
-                    <span>{{ __('themes::themes.custom') }}</span>
+                    <span>{{ __('filament-hasnayeen::themes.custom') }}</span>
                 </label>
             @else
-                <p>{{ __('themes::themes.no_changing_primary_color') }}</p>
+                <p>{{ __('filament-hasnayeen::themes.no_changing_primary_color') }}</p>
             @endif
         </div>
     </section>
 
     <section class="vft-section">
         <header class="vft-section-header">
-            <h2>{{ __('themes::themes.themes') }}</h2>
-            <p>{{ __('themes::themes.select_interface') }}</p>
+            <h2>{{ __('filament-hasnayeen::themes.themes') }}</h2>
+            <p>{{ __('filament-hasnayeen::themes.select_interface') }}</p>
         </header>
 
         <div class="vft-theme-list">
             @foreach ($this->getThemes() as $name => $theme)
                 @php
-                    $noLightMode = in_array(\Hasnayeen\Themes\Contracts\HasOnlyDarkMode::class, class_implements($theme));
-                    $noDarkMode = in_array(\Hasnayeen\Themes\Contracts\HasOnlyLightMode::class, class_implements($theme));
-                    $supportColorChange = in_array(\Hasnayeen\Themes\Contracts\HasChangeableColor::class, class_implements($theme));
-                    $isActive = $this->getCurrentTheme()->getName() === $name;
+                    $noLightMode = is_a($theme, \Vortechron\FilamentHasnayeen\Contracts\DarkModeOnly::class, true);
+                    $noDarkMode = is_a($theme, \Vortechron\FilamentHasnayeen\Contracts\LightModeOnly::class, true);
+                    $supportColorChange = is_a($theme, \Vortechron\FilamentHasnayeen\Contracts\SupportsCustomColor::class, true);
+                    $isActive = $this->getCurrentTheme()->name() === $name;
                 @endphp
 
                 <x-filament::section>
@@ -61,7 +61,7 @@
                             :outlined="! $isActive"
                             :disabled="$isActive"
                         >
-                            {{ $isActive ? __('themes::themes.active') : __('themes::themes.select') }}
+                            {{ $isActive ? __('filament-hasnayeen::themes.active') : __('filament-hasnayeen::themes.select') }}
                         </x-filament::button>
                     </x-slot>
 
@@ -74,19 +74,19 @@
                     <div class="vft-badges">
                         @if ($supportColorChange)
                             <x-filament::badge color="primary">
-                                {{ __('themes::themes.support_changing_primary_color') }}
+                                {{ __('filament-hasnayeen::themes.support_changing_primary_color') }}
                             </x-filament::badge>
                         @endif
 
                         @if (! $noLightMode)
                             <x-filament::badge color="warning">
-                                {{ __('themes::themes.light') }}
+                                {{ __('filament-hasnayeen::themes.light') }}
                             </x-filament::badge>
                         @endif
 
                         @if (! $noDarkMode)
                             <x-filament::badge color="gray">
-                                {{ __('themes::themes.dark') }}
+                                {{ __('filament-hasnayeen::themes.dark') }}
                             </x-filament::badge>
                         @endif
                     </div>

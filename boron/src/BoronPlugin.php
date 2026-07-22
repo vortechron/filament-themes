@@ -1,21 +1,26 @@
 <?php
 
+declare(strict_types=1);
+
 namespace Vortechron\FilamentBoron;
 
 use Filament\Contracts\Plugin;
+use Filament\FontProviders\LocalFontProvider;
 use Filament\Panel;
 use Filament\Support\Assets\Css;
+use Filament\Support\Assets\Font;
 
 /**
  * Boron theme plugin for Filament.
  *
- * Registering this plugin applies the Boron colour palette and the Lexend
- * font to a panel. The visual signature (cream surfaces, hard offset card
- * shadows, black sidebar) lives in the theme CSS, which the host app compiles
- * through Vite and registers with ->viteTheme(...). See the package README.
+ * Applies the Boron palette, Lexend font, and prebuilt stylesheet to one panel.
  */
 class BoronPlugin implements Plugin
 {
+    public const ASSET_PACKAGE = 'vortechron/filament-boron';
+
+    public const ID = 'vortechron-boron';
+
     protected bool $applyColors = true;
 
     protected bool $applyFont = true;
@@ -29,7 +34,7 @@ class BoronPlugin implements Plugin
 
     public function getId(): string
     {
-        return 'boron';
+        return self::ID;
     }
 
     /**
@@ -43,7 +48,7 @@ class BoronPlugin implements Plugin
     }
 
     /**
-     * Skip loading the Lexend Google font.
+     * Skip loading the bundled Lexend font.
      */
     public function withoutFont(): static
     {
@@ -69,13 +74,23 @@ class BoronPlugin implements Plugin
         }
 
         if ($this->applyFont) {
-            $panel->font('Lexend');
+            $font = Font::make('lexend', __DIR__.'/../resources/fonts/lexend');
+
+            $panel
+                ->assets([
+                    $font,
+                ], package: self::ASSET_PACKAGE)
+                ->font(
+                    'Lexend',
+                    url: fn (): string => asset($font->getRelativePublicPath().'/index.css'),
+                    provider: LocalFontProvider::class,
+                );
         }
 
         if ($this->applyStyles) {
             $panel->assets([
-                Css::make('boron-theme', __DIR__.'/../resources/css/boron.css'),
-            ], package: 'vortechron/filament-boron');
+                Css::make('theme', __DIR__.'/../resources/css/theme.css'),
+            ], package: self::ASSET_PACKAGE);
         }
     }
 
