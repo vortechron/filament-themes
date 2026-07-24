@@ -1,0 +1,531 @@
+/* Buttons, badges, tabs, cards, dropdowns, callouts, and common content. */
+.fi-body .fi-btn {
+  min-height: 28px;
+  gap: 4px;
+  border-radius: var(--ripe-radius);
+  padding: 4px 8px;
+  background: var(--ripe-surface);
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 600;
+  letter-spacing: 0;
+  box-shadow: var(--ripe-shadow-control);
+  transition:
+    background-color 100ms ease,
+    color 100ms ease,
+    box-shadow 100ms ease,
+    transform 50ms ease;
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):hover {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):active {
+  transform: translateY(1px);
+  box-shadow: 0 0 0 1px var(--ripe-line);
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-btn.fi-size-xs,
+.fi-body .fi-btn.fi-size-sm {
+  min-height: 24px;
+  padding: 2px 6px;
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-btn.fi-size-lg {
+  min-height: 36px;
+  padding: 8px 12px;
+}
+
+.fi-body .fi-btn.fi-size-xl {
+  min-height: 40px;
+  padding: 10px 14px;
+}
+
+.fi-body .fi-btn.fi-color-primary:not(.fi-outlined) {
+  background: var(--ripe-primary);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--ripe-primary);
+}
+
+.fi-body
+  .fi-btn.fi-color-primary:not(.fi-outlined):not(.fi-disabled):not(
+    [disabled]
+  ):hover {
+  background: var(--ripe-primary-hover);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--ripe-primary-hover);
+}
+
+.fi-body
+  .fi-btn.fi-color-primary:not(.fi-outlined):not(.fi-disabled):not(
+    [disabled]
+  ):active {
+  background: var(--ripe-primary-pressed);
+  box-shadow: 0 0 0 1px var(--ripe-primary-pressed);
+}
+
+.fi-body .fi-btn.fi-color-danger:not(.fi-outlined) {
+  background: var(--ripe-danger);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--ripe-danger);
+}
+
+.fi-body
+  .fi-btn.fi-color-danger:not(.fi-outlined):not(.fi-disabled):not(
+    [disabled]
+  ):hover {
+  background: var(--ripe-danger-hover);
+  color: #fff;
+  box-shadow: 0 0 0 1px var(--ripe-danger-hover);
+}
+
+.fi-body
+  .fi-btn.fi-color-danger:not(.fi-outlined):not(.fi-disabled):not(
+    [disabled]
+  ):active {
+  background: var(--ripe-danger-pressed);
+  box-shadow: 0 0 0 1px var(--ripe-danger-pressed);
+}
+
+.fi-body .fi-btn.fi-outlined {
+  background: transparent;
+  color: var(--ripe-body);
+  box-shadow: inset 0 0 0 1px var(--ripe-line);
+}
+
+.fi-body .fi-btn.fi-outlined.fi-color-primary {
+  color: var(--ripe-interactive);
+  box-shadow: inset 0 0 0 1px var(--ripe-interactive);
+}
+
+.fi-body .fi-btn.fi-outlined.fi-color-danger {
+  color: var(--ripe-danger-text);
+  box-shadow: inset 0 0 0 1px var(--ripe-danger-line);
+}
+
+.fi-body .fi-btn.fi-disabled:not(.fi-force-enabled),
+.fi-body .fi-btn[disabled]:not(.fi-force-enabled),
+.fi-body .fi-btn.fi-processing {
+  cursor: default;
+  background: var(--ripe-surface-neutral);
+  color: var(--ripe-disabled);
+  box-shadow: 0 0 0 1px var(--ripe-hair);
+  opacity: 1;
+}
+
+.fi-body .fi-btn > .fi-icon {
+  color: currentColor;
+}
+
+.fi-body .fi-btn-group {
+  gap: 0;
+  border-radius: var(--ripe-radius);
+  box-shadow: var(--ripe-shadow-control);
+}
+
+.fi-body .fi-btn-group > .fi-btn {
+  box-shadow: none;
+}
+
+.fi-body .fi-btn-group > .fi-btn:not(:first-child) {
+  border-inline-start: 1px solid var(--ripe-line);
+}
+
+.fi-body .fi-icon-btn:not(.fi-color) {
+  border-radius: var(--ripe-radius);
+  color: var(--ripe-muted);
+}
+
+.fi-body .fi-icon-btn:not(.fi-color):hover,
+.fi-body .fi-icon-btn:not(.fi-color):focus-visible {
+  background: var(--ripe-surface-hover);
+  color: var(--ripe-ink);
+}
+
+.fi-body .fi-icon.fi-color-primary,
+.fi-body .fi-icon.fi-color-info,
+.fi-body .fi-icon-btn.fi-color-primary,
+.fi-body .fi-icon-btn.fi-color-info {
+  color: var(--ripe-info-text);
+}
+
+.fi-body .fi-icon.fi-color-success,
+.fi-body .fi-icon-btn.fi-color-success {
+  color: var(--ripe-success-text);
+}
+
+.fi-body .fi-icon.fi-color-warning,
+.fi-body .fi-icon-btn.fi-color-warning {
+  color: var(--ripe-warning-text);
+}
+
+.fi-body .fi-icon.fi-color-danger,
+.fi-body .fi-icon-btn.fi-color-danger {
+  color: var(--ripe-danger-text);
+}
+
+.fi-body .fi-badge {
+  min-width: 20px;
+  min-height: 20px;
+  gap: 4px;
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius-xs);
+  padding: 1px 6px;
+  background: var(--ripe-surface-neutral);
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 400;
+  letter-spacing: 0;
+  box-shadow: none;
+}
+
+.fi-body .fi-badge.fi-size-xs,
+.fi-body .fi-badge.fi-size-sm {
+  min-height: 18px;
+  padding: 0 5px;
+}
+
+.fi-body .fi-badge.fi-color-primary,
+.fi-body .fi-badge.fi-color-info {
+  border-color: var(--ripe-info-line);
+  background: var(--ripe-info-bg);
+  color: var(--ripe-info-text);
+}
+
+.fi-body .fi-badge.fi-color-success {
+  border-color: var(--ripe-success-line);
+  background: var(--ripe-success-bg);
+  color: var(--ripe-success-text);
+}
+
+.fi-body .fi-badge.fi-color-warning {
+  border-color: var(--ripe-warning-line);
+  background: var(--ripe-warning-bg);
+  color: var(--ripe-warning-text);
+}
+
+.fi-body .fi-badge.fi-color-danger {
+  border-color: var(--ripe-danger-line);
+  background: var(--ripe-danger-bg);
+  color: var(--ripe-danger-text);
+}
+
+.fi-body .fi-badge .fi-icon,
+.fi-body .fi-badge.fi-color .fi-icon {
+  color: currentColor;
+}
+
+.fi-body .fi-badge-delete-btn {
+  color: currentColor;
+}
+
+.fi-body .fi-tabs:not(.fi-vertical) {
+  position: relative;
+  /* Fill the row so tabs pack to the left and the hairline spans end-to-end.
+     Without this the flex box shrinks to fit its tabs and the parent centers
+     it, so justify-content alone can't left-align. */
+  width: 100%;
+  justify-content: flex-start;
+  /* 8px gap + 8px inline padding per tab keeps the visual 24px label rhythm
+     while giving each tab a hover surface that hugs its label. The negative
+     inline margin keeps the first label flush with the content edge. */
+  gap: 8px;
+  margin-inline: -8px;
+  width: calc(100% + 16px);
+  overflow-x: auto;
+  overflow-y: hidden;
+  /* Full-width hairline that runs end-to-end under every tab. Rendered as a
+     pseudo-element (not border-bottom) so the active tab's accent underline
+     can sit flush on top of it as one continuous line. */
+  border-bottom: 0;
+  border-radius: 0;
+  padding: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.fi-body .fi-tabs:not(.fi-vertical)::after {
+  content: "";
+  position: absolute;
+  /* Mirrors the container's -8px inline margin so the hairline still spans
+     exactly the page content width. */
+  inset-inline: 8px;
+  bottom: 0;
+  height: 1px;
+  background: var(--ripe-hair);
+  pointer-events: none;
+}
+
+.fi-body .fi-tabs:not(.fi-vertical) .fi-tabs-item {
+  position: relative;
+  z-index: 1;
+  flex: 0 0 auto;
+  min-height: 52px;
+  /* Accent underline overlaps the full-width hairline: -1px pulls the 2px
+     bar down over the 1px line so the selected tab reads as one thick line. */
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  border-radius: var(--ripe-radius) var(--ripe-radius) 0 0;
+  padding: 16px 8px 14px;
+  background: transparent;
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 600;
+  transition:
+    background-color 100ms ease,
+    color 100ms ease;
+}
+
+.fi-body .fi-tabs:not(.fi-vertical) .fi-tabs-item:hover,
+.fi-body .fi-tabs:not(.fi-vertical) .fi-tabs-item:focus-visible {
+  background: var(--ripe-tint-hover);
+  color: var(--ripe-ink);
+}
+
+.fi-body .fi-tabs:not(.fi-vertical) .fi-tabs-item.fi-active {
+  border-bottom-color: var(--ripe-interactive);
+  background: transparent;
+  color: var(--ripe-interactive);
+}
+
+.fi-body .fi-tabs .fi-tabs-item.fi-disabled,
+.fi-body .fi-tabs .fi-tabs-item[disabled] {
+  cursor: default;
+  color: var(--ripe-disabled);
+  opacity: 1;
+  pointer-events: none;
+}
+
+.fi-body .fi-tabs-item .fi-tabs-item-label,
+.fi-body .fi-tabs-item.fi-active .fi-tabs-item-label,
+.fi-body .fi-tabs-item.fi-active > .fi-icon {
+  color: inherit;
+}
+
+.fi-body .fi-tabs.fi-vertical {
+  gap: 4px;
+  border-inline-end: 1px solid var(--ripe-line);
+  border-radius: 0;
+  padding: 0 8px 0 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+.fi-body .fi-tabs.fi-vertical .fi-tabs-item {
+  min-height: 32px;
+  border-radius: var(--ripe-radius);
+  padding: 6px 8px;
+}
+
+.fi-body .fi-tabs.fi-vertical .fi-tabs-item:hover:not(.fi-active),
+.fi-body .fi-tabs.fi-vertical .fi-tabs-item:focus-visible:not(.fi-active) {
+  background: var(--ripe-tint-hover);
+  color: var(--ripe-ink);
+}
+
+.fi-body .fi-tabs.fi-vertical .fi-tabs-item.fi-active {
+  background: var(--ripe-surface-selected);
+  color: var(--ripe-interactive);
+}
+
+.fi-body .fi-section:not(.fi-section-not-contained),
+.fi-body .fi-wi-stats-overview-stat,
+.fi-body .fi-ta-ctn,
+.fi-body .fi-in-repeatable-item,
+.fi-body .fi-fo-repeater-item,
+.fi-body .fi-fo-builder-item {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+  box-shadow: none;
+}
+
+.fi-body .fi-section.fi-secondary {
+  background: var(--ripe-surface-neutral);
+}
+
+.fi-body .fi-section > .fi-section-header {
+  padding: 16px;
+}
+
+.fi-body
+  .fi-section:not(.fi-section-not-contained):not(.fi-divided)
+  > .fi-section-content-ctn
+  > .fi-section-content {
+  padding: 16px;
+}
+
+.fi-body
+  .fi-section.fi-section-has-header:not(.fi-collapsed)
+  > .fi-section-content-ctn,
+.fi-body .fi-section > .fi-section-content-ctn > .fi-section-footer {
+  border-color: var(--ripe-hair);
+}
+
+.fi-body .fi-section.fi-collapsible > .fi-section-header:hover {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-section-collapse-btn {
+  color: var(--ripe-muted);
+}
+
+/* Selected/highlighted card state, e.g. the current pricing plan. Doubles the
+   keyline into a tight 2px primary ring on the section's own rounded border. */
+.fi-body .fi-section.ripe-selected {
+  border-color: var(--ripe-primary);
+  box-shadow: 0 0 0 1px var(--ripe-primary);
+}
+
+.fi-body .fi-dropdown-panel {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface-raised);
+  box-shadow: var(--ripe-shadow-lg);
+  /* Tall dropdowns (columns toggle, filters) scroll instead of overflowing. */
+  max-height: min(24rem, calc(100dvh - 3rem));
+  overflow-y: auto;
+}
+
+/* The table filters dropdown can be taller — give it a slightly larger cap. */
+.fi-body .fi-ta-filters-dropdown .fi-dropdown-panel {
+  max-height: min(28rem, calc(100dvh - 2rem));
+}
+
+.fi-body .fi-dropdown-list {
+  padding: 4px;
+}
+
+.fi-body .fi-dropdown-list-item {
+  min-height: 32px;
+  gap: 8px;
+  border-radius: var(--ripe-radius-xs);
+  padding: 6px 8px;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-dropdown-list-item:not(.fi-disabled):not([disabled]):hover,
+.fi-body .fi-dropdown-list-item.fi-selected {
+  background: var(--ripe-surface-selected);
+}
+
+.fi-body .fi-dropdown-list-item.fi-disabled,
+.fi-body .fi-dropdown-list-item[disabled] {
+  cursor: default;
+  color: var(--ripe-disabled);
+  opacity: 1;
+}
+
+.fi-body .fi-dropdown-list-item.fi-color-danger {
+  color: var(--ripe-danger-text);
+}
+
+.fi-body
+  .fi-dropdown-list-item.fi-color-danger:not(.fi-disabled):not(
+    [disabled]
+  ):hover,
+.fi-body .fi-dropdown-list-item.fi-color-danger.fi-selected {
+  background: var(--ripe-danger-bg);
+}
+
+.fi-body .fi-dropdown-list-item-label {
+  color: inherit;
+}
+
+.fi-body .fi-dropdown-list-item.fi-color-danger .fi-dropdown-list-item-label {
+  color: var(--ripe-danger-text);
+}
+
+.fi-body .fi-dropdown-header {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 700;
+}
+
+.fi-body .fi-callout {
+  gap: 12px;
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  padding: 16px;
+  background: var(--ripe-surface);
+  box-shadow: none;
+}
+
+.fi-body .fi-callout.fi-color-info,
+.fi-body .fi-callout.fi-color-primary {
+  border-color: var(--ripe-info-line);
+  background: var(--ripe-info-bg);
+}
+
+.fi-body .fi-callout.fi-color-success {
+  border-color: var(--ripe-success-line);
+  background: var(--ripe-success-bg);
+}
+
+.fi-body .fi-callout.fi-color-warning {
+  border-color: var(--ripe-warning-line);
+  background: var(--ripe-warning-bg);
+}
+
+.fi-body .fi-callout.fi-color-danger {
+  border-color: var(--ripe-danger-line);
+  background: var(--ripe-danger-bg);
+}
+
+.fi-body .fi-callout-heading {
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 700;
+}
+
+.fi-body .fi-callout-description {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-callout.fi-color-primary .fi-callout-icon,
+.fi-body .fi-callout.fi-color-info .fi-callout-icon {
+  color: var(--ripe-info-text);
+}
+
+.fi-body .fi-callout.fi-color-success .fi-callout-icon {
+  color: var(--ripe-success-text);
+}
+
+.fi-body .fi-callout.fi-color-warning .fi-callout-icon {
+  color: var(--ripe-warning-text);
+}
+
+.fi-body .fi-callout.fi-color-danger .fi-callout-icon {
+  color: var(--ripe-danger-text);
+}
+
+.fi-body .fi-avatar,
+.fi-body .fi-user-avatar,
+.fi-body .fi-tenant-avatar {
+  box-shadow: 0 0 0 1px var(--ripe-line);
+}
+
+.fi-body .fi-fieldset {
+  border-color: var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+}

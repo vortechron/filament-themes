@@ -24,7 +24,7 @@ use Vortechron\FilamentBoron\BoronPlugin;
 ->plugin(BoronPlugin::make())
 ```
 
-### Ripe — compact Stripe-inspired dashboard
+### Ripe — Stripe Apps SDK v9 visual system
 
 ```php
 use Vortechron\FilamentRipe\RipePlugin;
@@ -62,7 +62,7 @@ contains four selectable visual themes and should be used by itself.
 | Theme | Best for | Build step | Extra setup |
 | --- | --- | --- | --- |
 | [Boron](boron/README.md) | Neubrutalist cream, sage, and black admin UI | None | Register one plugin |
-| [Ripe](ripe/README.md) | Compact Stripe-inspired dashboards | None | Register one plugin |
+| [Ripe](ripe/README.md) | Stripe Apps SDK v9-style components and dashboards | None | Register one plugin |
 | [Hasnayeen](hasnayeen/README.md) | Let users switch between Default, Dracula, Nord, and Sunset | None | Run its install command and migration |
 
 ## Consistent package API

@@ -1,7 +1,9 @@
 # Ripe Theme for Filament 5
 
-A compact Stripe-dashboard inspired theme for **Filament 5**: purple accents,
-soft white cards, hairline borders, dense tables, and dark navy surfaces.
+A comprehensive Stripe Apps SDK v9 visual-system translation for **Filament
+5**. Ripe maps Stripe's component density, type, spacing, keylines, actions,
+forms, data presentation, feedback, and interaction states onto Filament's
+public CSS hooks.
 
 ## Requirements
 
@@ -51,14 +53,19 @@ Filament theme with the more specific `.fi-body` selector:
 
 ```css
 .fi-body {
-    --ripe-primary: #00b4d8;
-    --ripe-radius-lg: 12px;
-    --ripe-canvas: #f4f6fb;
+  --ripe-primary: #00b4d8;
+  --ripe-radius-lg: 12px;
+  --ripe-canvas: #f4f6fb;
 }
 ```
 
-The complete token list is at the top of
-`resources/css/_overrides.css` in this package.
+The complete token list is in `resources/css/_tokens.css`. The full Stripe Apps
+SDK v9 to Filament mapping is documented in
+[`STRIPE_APPS_V9_COVERAGE.md`](STRIPE_APPS_V9_COVERAGE.md).
+
+Ripe includes no Stripe logos, fonts, images, React components, or proprietary
+runtime assets. It is an independent visual translation and is not affiliated
+with or endorsed by Stripe.
 
 ## Package development
 
@@ -75,7 +82,8 @@ Commit the rebuilt `resources/dist/theme.css` with every source CSS change.
 ## Production check
 
 Confirm the panel login, sidebar, tables, forms, dropdowns, modals, mobile
-navigation, and both light and dark mode after each Filament major upgrade.
+navigation, charts, loading/empty/error states, and both light and dark mode
+after each Filament major upgrade.
 
 ## License
 

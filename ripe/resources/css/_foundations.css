@@ -1,0 +1,125 @@
+/* Canvas, type, layout, links, icons, and simple/auth pages. */
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+
+.fi-body {
+  min-height: 100vh;
+  color: var(--ripe-body);
+  background: var(--ripe-canvas);
+  font-family: var(--ripe-font);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  letter-spacing: -0.006em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11", "ss01";
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+.fi-body ::selection {
+  color: var(--ripe-ink);
+  background: rgba(83, 58, 253, 0.18);
+}
+
+.fi-body .fi-main-ctn,
+.fi-body .fi-main,
+.fi-body .fi-page,
+.fi-body .fi-page-main {
+  background: var(--ripe-canvas);
+}
+
+.fi-body .fi-header-heading,
+.fi-body .fi-section-header-heading,
+.fi-body .fi-modal-heading,
+.fi-body .fi-empty-state-heading,
+.fi-body .fi-ta-header-heading {
+  color: var(--ripe-ink);
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.fi-body .fi-header-heading {
+  font-size: var(--ripe-fs-page);
+  line-height: var(--ripe-lh-page);
+}
+
+.fi-body .fi-section-header-heading,
+.fi-body .fi-modal-heading,
+.fi-body .fi-empty-state-heading,
+.fi-body .fi-ta-header-heading {
+  font-size: var(--ripe-fs-heading);
+  line-height: var(--ripe-lh-heading);
+}
+
+.fi-body .fi-header-subheading,
+.fi-body .fi-section-header-description,
+.fi-body .fi-modal-description,
+.fi-body .fi-empty-state-description,
+.fi-body .fi-ta-header-description {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-link,
+.fi-body a.fi-link,
+.fi-body .fi-sc-text a:not(.fi-btn),
+.fi-body .fi-prose a {
+  border-radius: var(--ripe-radius-xs);
+  color: var(--ripe-interactive);
+  font-weight: 600;
+  text-decoration: none;
+  transition:
+    color 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.fi-body .fi-link:hover,
+.fi-body a.fi-link:hover,
+.fi-body .fi-sc-text a:not(.fi-btn):hover,
+.fi-body .fi-prose a:hover {
+  color: var(--ripe-interactive-hover);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.fi-body .fi-link:focus-visible,
+.fi-body a.fi-link:focus-visible,
+.fi-body .fi-sc-text a:not(.fi-btn):focus-visible,
+.fi-body .fi-prose a:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 3px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-simple-layout {
+  background: var(--ripe-canvas);
+}
+
+.fi-body .fi-simple-main {
+  border-radius: var(--ripe-radius-lg);
+  background: var(--ripe-surface);
+  box-shadow: var(--ripe-shadow);
+}
+
+.fi-body .fi-simple-header-heading {
+  color: var(--ripe-ink);
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: 700;
+}
+
+.fi-body .fi-simple-header-subheading {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-logo {
+  color: var(--ripe-ink);
+}
+
+.fi-body .fi-skip-link {
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-primary);
+  color: #fff;
+  box-shadow: var(--ripe-shadow-control);
+}

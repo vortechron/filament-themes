@@ -32,7 +32,7 @@ class RipePlugin implements Plugin
     {
         $panel
             ->colors([
-                'primary' => Color::hex('#635bff'),
+                'primary' => Color::hex('#533afd'),
             ])
             ->assets([
                 Css::make('theme', __DIR__.'/../resources/dist/theme.css'),

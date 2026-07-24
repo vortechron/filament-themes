@@ -1,0 +1,254 @@
+/* ContextView-style shell: dark sidebar + topbar, breadcrumbs, and search. */
+.fi-body .fi-sidebar,
+.fi-body .fi-sidebar-nav,
+.fi-body .fi-sidebar-header,
+.fi-body .fi-sidebar-footer {
+  background: var(--ripe-shell);
+}
+
+.fi-body .fi-sidebar {
+  border-inline-end: 1px solid var(--ripe-shell-line);
+  box-shadow: none;
+}
+
+.fi-body .fi-sidebar-header {
+  border-bottom: 1px solid var(--ripe-shell-line);
+  box-shadow: none;
+}
+
+.fi-body .fi-sidebar-footer {
+  border-top: 1px solid var(--ripe-shell-line);
+}
+
+/* Brand/logo sits on the dark shell */
+.fi-body .fi-sidebar .fi-logo {
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-sidebar-group-label {
+  color: var(--ripe-shell-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.fi-body .fi-sidebar-item-btn {
+  min-height: 32px;
+  border-radius: var(--ripe-radius);
+  padding-block: 6px;
+  color: var(--ripe-shell-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 500;
+  transition:
+    background-color 100ms ease,
+    color 100ms ease,
+    box-shadow 100ms ease;
+}
+
+/* Force label color — Filament's default utility dims it on dark shells */
+.fi-body .fi-sidebar-item-btn .fi-sidebar-item-label,
+.fi-body .fi-sidebar-item-btn > span:not(.fi-sidebar-item-icon) {
+  color: var(--ripe-shell-body);
+}
+
+.fi-body .fi-sidebar-item-icon,
+.fi-body .fi-sidebar-group-btn .fi-icon,
+.fi-body .fi-sidebar-group-collapse-btn {
+  color: var(--ripe-shell-muted);
+}
+
+.fi-body .fi-sidebar-item-btn:hover,
+.fi-body .fi-sidebar-item-btn:focus-visible,
+.fi-body .fi-sidebar-group-btn:hover {
+  background: var(--ripe-shell-hover);
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-sidebar-item-btn:hover .fi-sidebar-item-label,
+.fi-body .fi-sidebar-item-btn:focus-visible .fi-sidebar-item-label,
+.fi-body .fi-sidebar-item-btn:hover > span:not(.fi-sidebar-item-icon),
+.fi-body .fi-sidebar-item-btn:focus-visible > span:not(.fi-sidebar-item-icon),
+.fi-body .fi-sidebar-item-btn:hover .fi-sidebar-item-icon,
+.fi-body .fi-sidebar-item-btn:focus-visible .fi-sidebar-item-icon {
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-sidebar-item-btn:focus-visible,
+.fi-body .fi-sidebar-group-btn:focus-visible {
+  outline: 0;
+  box-shadow: inset 0 0 0 2px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-sidebar-item.fi-active > .fi-sidebar-item-btn,
+.fi-body
+  .fi-sidebar-item.fi-sidebar-item-has-active-child-items
+  > .fi-sidebar-item-btn {
+  background: var(--ripe-shell-selected);
+  color: var(--ripe-shell-ink);
+  font-weight: 600;
+}
+
+.fi-body
+  .fi-sidebar-item.fi-active
+  > .fi-sidebar-item-btn
+  .fi-sidebar-item-label,
+.fi-body
+  .fi-sidebar-item.fi-active
+  > .fi-sidebar-item-btn
+  > span:not(.fi-sidebar-item-icon) {
+  color: var(--ripe-shell-accent);
+}
+
+.fi-body .fi-sidebar-item.fi-active .fi-sidebar-item-icon,
+.fi-body
+  .fi-sidebar-item.fi-sidebar-item-has-active-child-items
+  > .fi-sidebar-item-btn
+  .fi-sidebar-item-icon {
+  color: var(--ripe-shell-accent);
+}
+
+.fi-body .fi-sidebar-item-badge-ctn .fi-badge {
+  min-width: 20px;
+}
+
+/* Tenant/project switcher: a readable white control on the dark shell. */
+.fi-body .fi-tenant-menu-trigger {
+  gap: 8px;
+  border-radius: var(--ripe-radius);
+  padding: 6px 8px;
+  background: var(--ripe-surface);
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 600;
+  box-shadow: var(--ripe-shadow-control);
+  transition:
+    background-color 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.fi-body .fi-tenant-menu-trigger:hover {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-tenant-menu-trigger:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-tenant-menu-trigger .fi-tenant-menu-trigger-text {
+  color: var(--ripe-body);
+}
+
+.fi-body .fi-tenant-menu-trigger .fi-icon {
+  color: var(--ripe-muted);
+}
+
+.fi-body .fi-topbar,
+.fi-body .fi-topbar > nav,
+.fi-body .fi-topbar-ctn {
+  background: var(--ripe-shell);
+  box-shadow: none;
+}
+
+.fi-body .fi-topbar {
+  border-bottom: 1px solid var(--ripe-shell-line);
+}
+
+.fi-body .fi-topbar .fi-logo {
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-topbar-item-btn {
+  min-height: 36px;
+  border-radius: var(--ripe-radius);
+  color: var(--ripe-shell-body);
+  font-size: var(--ripe-fs-base);
+  font-weight: 600;
+}
+
+.fi-body .fi-topbar-item-btn .fi-icon,
+.fi-body .fi-topbar .fi-icon-btn {
+  color: var(--ripe-shell-muted);
+}
+
+.fi-body .fi-topbar-item-btn:hover,
+.fi-body .fi-topbar-item-btn:focus-visible,
+.fi-body .fi-topbar-item.fi-active .fi-topbar-item-btn {
+  background: var(--ripe-shell-hover);
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-topbar .fi-icon-btn:hover,
+.fi-body .fi-topbar .fi-icon-btn:focus-visible {
+  background: var(--ripe-shell-hover);
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-breadcrumbs-item-label {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 500;
+}
+
+.fi-body .fi-breadcrumbs-item:last-child .fi-breadcrumbs-item-label {
+  color: var(--ripe-body);
+  font-weight: 600;
+}
+
+.fi-body .fi-breadcrumbs-item-separator {
+  color: var(--ripe-faint);
+}
+
+.fi-body .fi-topbar .fi-global-search-field .fi-input-wrp {
+  min-height: 32px;
+  background: var(--ripe-shell-raised);
+  box-shadow: inset 0 0 0 1px var(--ripe-shell-line);
+}
+
+.fi-body .fi-topbar .fi-global-search-field .fi-input {
+  /* Fill the taller topbar wrapper (32px) so the text centers with the icon
+     instead of hugging the top edge (the input's own min-height is 28px). */
+  min-height: 32px;
+  color: var(--ripe-shell-ink);
+}
+
+.fi-body .fi-topbar .fi-global-search-field .fi-input::placeholder {
+  color: var(--ripe-shell-muted);
+}
+
+.fi-body .fi-topbar .fi-global-search-field .fi-input-wrp .fi-icon {
+  color: var(--ripe-shell-muted);
+}
+
+.fi-body .fi-global-search-results-ctn {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius-lg);
+  background: var(--ripe-surface-raised);
+  box-shadow: var(--ripe-shadow-lg);
+}
+
+.fi-body .fi-global-search-result-link {
+  border-radius: var(--ripe-radius);
+}
+
+.fi-body .fi-global-search-result-link:hover,
+.fi-body .fi-global-search-result-link:focus-visible {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-global-search-result-heading {
+  color: var(--ripe-ink);
+  font-weight: 600;
+}
+
+.fi-body .fi-global-search-result-detail-label,
+.fi-body .fi-global-search-no-results-message {
+  color: var(--ripe-muted);
+}

@@ -1,0 +1,253 @@
+/* DataTable/Table, property lists, lists, stats, charts, and pagination. */
+
+/* Clip rounded corners ONLY when the table has no header toolbar. A table with
+   a filter/columns toolbar must NOT clip, or its dropdowns get cut off inside
+   the container. */
+.fi-body .fi-ta-ctn:not(.fi-ta-ctn-with-header) {
+  overflow: hidden;
+}
+
+/* With overflow unclipped (so the header's column/filter dropdowns can escape —
+   Filament positions those panels absolutely, teleport is off, so any clipping
+   ancestor cuts them), the header toolbar's square-cornered background paints
+   over the container's rounded top border and the top edge looks border-less.
+   Fix by rounding the top corners of the painted header elements themselves —
+   no overflow clip, so the dropdowns still escape.
+   DOM: .fi-ta-ctn > .fi-ta-main > .fi-ta-header-ctn > .fi-ta-header */
+.fi-body .fi-ta-ctn-with-header .fi-ta-main,
+.fi-body .fi-ta-ctn-with-header .fi-ta-header-ctn,
+.fi-body .fi-ta-ctn-with-header .fi-ta-header {
+  border-start-start-radius: var(--ripe-radius);
+  border-start-end-radius: var(--ripe-radius);
+}
+
+/* Filament core pulls the header up 1px (margin-top: -1px) to fuse with its
+   ring-based container edge. Our container uses a real border, so that pull
+   paints the white toolbar OVER the card's top keyline and the table looks
+   border-less on top. Keep the header inside the border. */
+.fi-body .fi-ta-header-ctn {
+  margin-top: 0;
+}
+
+/* Keep the header-cell row's top keyline the clip used to imply. */
+.fi-body .fi-ta-ctn-with-header .fi-ta-table thead {
+  border-top: 1px solid var(--ripe-hair);
+}
+
+.fi-body .fi-ta-table {
+  background: var(--ripe-surface);
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-ta-header,
+.fi-body .fi-ta-header-ctn,
+.fi-body .fi-ta-header-toolbar {
+  border-color: var(--ripe-hair);
+  background: var(--ripe-surface);
+}
+
+.fi-body .fi-ta-header-cell {
+  height: 36px;
+  border-bottom: 1px solid var(--ripe-hair);
+  padding-block: 8px;
+  background: var(--ripe-surface);
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-base);
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.fi-body .fi-ta-header-cell-sort-btn {
+  border-radius: var(--ripe-radius-xs);
+  color: inherit;
+}
+
+.fi-body .fi-ta-header-cell-sort-btn:hover,
+.fi-body .fi-ta-header-cell-sort-btn:focus-visible {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-ta-row {
+  min-height: 44px;
+  border-bottom: 1px solid var(--ripe-hair);
+  background: var(--ripe-surface);
+  transition: background-color 100ms ease;
+}
+
+.fi-body .fi-ta-row:hover {
+  background: var(--ripe-row-hover);
+}
+
+.fi-body .fi-ta-cell {
+  min-height: 44px;
+  padding-block: 10px;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-ta-cell .fi-ta-text {
+  color: inherit;
+}
+
+.fi-body .fi-ta-cell:first-child .fi-ta-text {
+  color: var(--ripe-ink);
+  font-weight: 600;
+}
+
+.fi-body .fi-ta-text-description,
+.fi-body .fi-ta-group-description,
+.fi-body .fi-ta-placeholder {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-ta-group-header-row,
+.fi-body .fi-ta-summary-row,
+.fi-body .fi-ta-selection-indicator {
+  border-color: var(--ripe-hair);
+  background: var(--ripe-surface-neutral);
+}
+
+.fi-body .fi-ta-group-heading,
+.fi-body .fi-ta-summary-row-heading-cell {
+  color: var(--ripe-ink);
+  font-weight: 700;
+}
+
+.fi-body .fi-ta-filters,
+.fi-body .fi-ta-col-manager,
+.fi-body .fi-ta-grouping-settings,
+.fi-body .fi-ta-sorting-settings {
+  color: var(--ripe-body);
+}
+
+.fi-body .fi-ta-empty-state,
+.fi-body .fi-empty-state {
+  padding: 48px 24px;
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+  box-shadow: none;
+}
+
+.fi-body .fi-empty-state-icon-bg,
+.fi-body .fi-ta-empty-state-icon-bg {
+  background: var(--ripe-surface-neutral);
+}
+
+.fi-body .fi-pagination {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-pagination-item-btn,
+.fi-body .fi-pagination-previous-btn,
+.fi-body .fi-pagination-next-btn {
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+  color: var(--ripe-body);
+}
+
+.fi-body .fi-pagination-item.fi-active .fi-pagination-item-btn {
+  background: var(--ripe-primary);
+  color: #fff;
+}
+
+.fi-body .fi-pagination-item-btn:hover,
+.fi-body .fi-pagination-previous-btn:hover,
+.fi-body .fi-pagination-next-btn:hover {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-in-entry-label,
+.fi-body .fi-in-key-value dt,
+.fi-body .fi-in-table-repeatable th {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 600;
+}
+
+.fi-body .fi-in-entry-content,
+.fi-body .fi-in-key-value dd {
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-in-repeatable-item {
+  padding: 16px;
+}
+
+.fi-body .fi-in-image,
+.fi-body .fi-ta-image {
+  border-radius: var(--ripe-radius-xs);
+  box-shadow: 0 0 0 1px var(--ripe-line);
+}
+
+.fi-body .fi-wi-stats-overview-stat {
+  padding: 16px;
+  transition:
+    background-color 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.fi-body .fi-wi-stats-overview-stat:hover {
+  background: var(--ripe-row-hover);
+  box-shadow: var(--ripe-shadow-sm);
+}
+
+.fi-body .fi-wi-stats-overview-stat-label {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+  font-weight: 600;
+}
+
+.fi-body .fi-wi-stats-overview-stat-value {
+  color: var(--ripe-ink);
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.fi-body .fi-wi-stats-overview-stat-description {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-wi-chart,
+.fi-body .fi-wi-chart-frame,
+.fi-body .fi-wi-chart-canvas-ctn {
+  border-color: var(--ripe-hair);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+}
+
+.fi-body .fi-wi-chart-grid-color {
+  color: var(--ripe-hair);
+}
+
+.fi-body .fi-wi-chart-text-color {
+  color: var(--ripe-muted);
+}
+
+.fi-body .fi-wi-chart-border-color,
+.fi-body .fi-wi-stats-overview-stat-chart-border-color {
+  color: var(--ripe-interactive);
+}
+
+.fi-body .fi-wi-chart-bg-color,
+.fi-body .fi-wi-stats-overview-stat-chart-bg-color {
+  color: rgba(84, 105, 212, 0.12);
+}

@@ -1,0 +1,396 @@
+/* Stripe field sizing and states across Filament form components. */
+.fi-body .fi-fo-field-label-content,
+.fi-body .fi-fo-radio-label-text,
+.fi-body .fi-fo-checkbox-list-option-label,
+.fi-body .fi-fieldset legend {
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 600;
+}
+
+.fi-body .fi-fo-field-label-required-mark,
+.fi-body .fi-fieldset-label-required-mark {
+  color: var(--ripe-danger-text);
+}
+
+.fi-body .fi-fo-field-wrp-error-message {
+  color: var(--ripe-danger-text);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-fo-radio-label-description,
+.fi-body .fi-fo-checkbox-list-option-description,
+.fi-body .fi-fo-field-content-ctn > p {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+.fi-body .fi-input-wrp,
+.fi-body .fi-select-input,
+.fi-body .fi-fo-textarea-wrp,
+.fi-body .fi-fo-tags-input-wrp,
+.fi-body .fi-fo-date-time-picker-trigger {
+  min-height: 28px;
+  border: 0;
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+  box-shadow: var(--ripe-shadow-control);
+  transition:
+    background-color 100ms ease,
+    box-shadow 100ms ease;
+}
+
+.fi-body .fi-input-wrp:not(.fi-disabled):focus-within,
+.fi-body .fi-select-input:focus-visible,
+.fi-body .fi-fo-textarea-wrp:focus-within,
+.fi-body .fi-fo-tags-input-wrp:focus-within,
+.fi-body .fi-fo-date-time-picker-trigger:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-input-wrp.fi-invalid,
+.fi-body .fi-select-input.fi-invalid,
+.fi-body .fi-fo-textarea-wrp.fi-invalid,
+.fi-body .fi-fo-tags-input-wrp.fi-invalid {
+  box-shadow: 0 0 0 1px var(--ripe-danger);
+}
+
+.fi-body .fi-input-wrp.fi-invalid:focus-within,
+.fi-body .fi-fo-textarea-wrp.fi-invalid:focus-within {
+  box-shadow:
+    0 0 0 1px var(--ripe-danger),
+    0 0 0 4px rgba(230, 25, 71, 0.18);
+}
+
+.fi-body .fi-input-wrp.fi-disabled,
+.fi-body .fi-select-input:disabled,
+.fi-body .fi-input:disabled,
+.fi-body .fi-fo-textarea textarea:disabled {
+  cursor: not-allowed;
+  background: var(--ripe-surface-neutral);
+  color: var(--ripe-disabled);
+  opacity: 1;
+}
+
+.fi-body input.fi-input,
+.fi-body .fi-select-input,
+.fi-body .fi-fo-textarea textarea {
+  border: 0;
+  border-radius: var(--ripe-radius);
+  background: transparent;
+  color: var(--ripe-body);
+  font-family: var(--ripe-font);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body input.fi-input,
+.fi-body select.fi-select-input {
+  min-height: 28px;
+  padding-block: 4px;
+  padding-inline: 8px;
+}
+
+.fi-body input.fi-input::placeholder,
+.fi-body .fi-fo-textarea textarea::placeholder {
+  color: var(--ripe-faint);
+  opacity: 1;
+}
+
+.fi-body .fi-input-wrp-prefix,
+.fi-body .fi-input-wrp-suffix {
+  border-color: var(--ripe-line);
+  color: var(--ripe-muted);
+}
+
+.fi-body .fi-input-wrp-prefix:not(.fi-inline),
+.fi-body .fi-input-wrp-suffix:not(.fi-inline) {
+  padding-inline: 8px;
+}
+
+.fi-body .fi-input-wrp-label {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+}
+
+.fi-body .fi-fo-textarea textarea {
+  min-height: 76px;
+  padding: 8px;
+  box-shadow: none;
+}
+
+/* Native <select> is wrapped by .fi-input-wrp, which draws the box; the select
+   itself just needs input-matched padding plus room for the chevron. */
+.fi-body select.fi-select-input {
+  padding-inline-end: 28px;
+  font-weight: 600;
+  box-shadow: none;
+}
+
+/* Custom (searchable) select renders as div.fi-select-input with an inner
+   trigger button. Filament pads the wrapper and gives the button its own
+   36px min-height, which stacks into a control far taller than a text input.
+   Make the OUTER div the visual box (like .fi-input-wrp) and flatten the
+   inner button to the shared 28px control height. */
+.fi-body div.fi-select-input {
+  padding: 0;
+  background: var(--ripe-surface);
+  box-shadow: var(--ripe-shadow-control);
+}
+
+.fi-body div.fi-select-input:focus-within {
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-select-input div[x-ref="select"] {
+  min-height: 28px;
+}
+
+.fi-body .fi-select-input-btn {
+  min-height: 28px;
+  width: 100%;
+  border-radius: var(--ripe-radius);
+  padding: 4px 28px 4px 8px;
+  background: transparent;
+  box-shadow: none;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  --tw-leading: var(--ripe-lh-base);
+  font-weight: 600;
+}
+
+.fi-body .fi-select-input-placeholder {
+  color: var(--ripe-faint);
+  font-weight: 400;
+}
+
+.fi-body [id^="fi-select-input-dropdown-"] {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface-raised);
+  box-shadow: var(--ripe-shadow-lg);
+}
+
+.fi-body .fi-select-input-option {
+  min-height: 32px;
+  border-radius: var(--ripe-radius-xs);
+  padding: 6px 8px;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+}
+
+.fi-body .fi-select-input-option:hover,
+.fi-body .fi-select-input-option.fi-selected {
+  background: var(--ripe-surface-selected);
+}
+
+.fi-body .fi-checkbox-input,
+.fi-body .fi-radio-input {
+  width: 14px;
+  height: 14px;
+  border: 0;
+  background: var(--ripe-surface);
+  color: var(--ripe-primary);
+  box-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.12),
+    0 2px 5px rgba(48, 49, 61, 0.08),
+    0 0 0 1px var(--ripe-line);
+}
+
+.fi-body .fi-checkbox-input {
+  border-radius: var(--ripe-radius-xs);
+}
+
+.fi-body .fi-checkbox-input:checked,
+.fi-body .fi-checkbox-input:indeterminate,
+.fi-body .fi-radio-input:checked {
+  background-color: var(--ripe-primary);
+  box-shadow: 0 0 0 1px var(--ripe-primary);
+}
+
+.fi-body .fi-checkbox-input:focus-visible,
+.fi-body .fi-radio-input:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-checkbox-input.fi-invalid,
+.fi-body .fi-radio-input.fi-invalid,
+.fi-body .fi-checkbox-input[aria-invalid="true"],
+.fi-body .fi-radio-input[aria-invalid="true"] {
+  box-shadow: 0 0 0 1px var(--ripe-danger);
+}
+
+.fi-body .fi-checkbox-input.fi-invalid:focus-visible,
+.fi-body .fi-radio-input.fi-invalid:focus-visible,
+.fi-body .fi-checkbox-input[aria-invalid="true"]:focus-visible,
+.fi-body .fi-radio-input[aria-invalid="true"]:focus-visible {
+  box-shadow:
+    0 0 0 1px var(--ripe-danger),
+    0 0 0 4px rgba(230, 25, 71, 0.18);
+}
+
+.fi-body .fi-checkbox-input:disabled,
+.fi-body .fi-radio-input:disabled {
+  background: var(--ripe-surface-neutral);
+  box-shadow: 0 0 0 1px var(--ripe-hair);
+  opacity: 1;
+}
+
+.fi-body .fi-toggle {
+  width: 34px;
+  height: 18px;
+  border: 0;
+  border-radius: var(--ripe-radius-pill);
+  background: var(--ripe-hair);
+  box-shadow: var(--ripe-shadow-control);
+}
+
+.fi-body .fi-toggle.fi-toggle-on {
+  background: var(--ripe-primary);
+  box-shadow: 0 0 0 1px var(--ripe-primary);
+}
+
+.fi-body .fi-toggle.fi-toggle-off {
+  background: var(--ripe-hair);
+  box-shadow: var(--ripe-shadow-control);
+}
+
+.fi-body .fi-toggle:focus-visible {
+  outline: 0;
+  box-shadow:
+    0 0 0 1px var(--ripe-primary),
+    0 0 0 4px var(--ripe-primary-ring);
+}
+
+.fi-body .fi-toggle.fi-invalid,
+.fi-body .fi-toggle[aria-invalid="true"] {
+  box-shadow: 0 0 0 1px var(--ripe-danger);
+}
+
+.fi-body .fi-toggle:disabled,
+.fi-body .fi-toggle[disabled] {
+  cursor: not-allowed;
+  background: var(--ripe-surface-neutral);
+  box-shadow: 0 0 0 1px var(--ripe-hair);
+  opacity: 1;
+}
+
+.fi-body .fi-toggle > :first-child {
+  width: 14px;
+  height: 14px;
+  margin: 2px;
+  background: #fff;
+  box-shadow: 0 1px 2px rgba(16, 17, 26, 0.25);
+  translate: 0;
+  transform: none;
+}
+
+.fi-body .fi-toggle.fi-toggle-on > :first-child {
+  translate: 16px 0;
+}
+
+.fi-body[dir="rtl"] .fi-toggle.fi-toggle-on > :first-child,
+[dir="rtl"] .fi-body .fi-toggle.fi-toggle-on > :first-child {
+  translate: -16px 0;
+}
+
+/* The date picker trigger's display input carries Filament's default 6px/12px
+   padding, rendering 36px tall next to 28px inputs. Match the shared sizing. */
+.fi-body .fi-fo-date-time-picker-display-text-input {
+  min-height: 28px;
+  padding: 4px 8px;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .fi-fo-date-time-picker-display-text-input::placeholder {
+  color: var(--ripe-faint);
+  opacity: 1;
+}
+
+.fi-body .fi-fo-date-time-picker-panel,
+.fi-body .fi-fo-color-picker-panel {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius-lg);
+  background: var(--ripe-surface-raised);
+  box-shadow: var(--ripe-shadow-lg);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day {
+  border-radius: var(--ripe-radius-xs);
+  color: var(--ripe-body);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day:not(.fi-disabled):hover,
+.fi-body .fi-fo-date-time-picker-calendar-day.fi-focused:not(.fi-selected) {
+  background: var(--ripe-surface-hover);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day.fi-selected {
+  background: var(--ripe-primary);
+  color: #fff;
+}
+
+.fi-body
+  .fi-fo-date-time-picker-calendar-day-today:not(.fi-selected):not(
+    .fi-disabled
+  ) {
+  color: var(--ripe-interactive);
+  font-weight: 700;
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day.fi-disabled {
+  cursor: default;
+  color: var(--ripe-disabled);
+  opacity: 1;
+}
+
+.fi-body .fi-fo-tags-input-tags-ctn .fi-badge,
+.fi-body .fi-select-input-value-badges-ctn .fi-badge {
+  min-height: 24px;
+  border-radius: var(--ripe-radius-pill);
+  background: var(--ripe-surface);
+  color: var(--ripe-interactive);
+  font-weight: 600;
+}
+
+.fi-body .fi-fo-repeater-item-header,
+.fi-body .fi-fo-builder-item-header {
+  border-bottom: 1px solid var(--ripe-hair);
+  background: var(--ripe-surface-neutral);
+}
+
+.fi-body .fi-fo-rich-editor,
+.fi-body .fi-fo-markdown-editor,
+.fi-body .fi-fo-code-editor,
+.fi-body .fi-fo-key-value-table-ctn,
+.fi-body .fi-fo-file-upload-input-ctn {
+  border: 1px solid var(--ripe-line);
+  border-radius: var(--ripe-radius);
+  background: var(--ripe-surface);
+  box-shadow: none;
+}
+
+.fi-body .fi-fo-rich-editor-toolbar,
+.fi-body .fi-fo-markdown-editor .editor-toolbar {
+  border-color: var(--ripe-hair);
+  background: var(--ripe-surface-neutral);
+}
+
+.fi-body .fi-fo-file-upload-input-ctn:hover {
+  border-color: var(--ripe-interactive);
+  background: var(--ripe-surface-hover);
+}

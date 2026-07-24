@@ -1,0 +1,99 @@
+/* Stripe Apps SDK v9-aligned design tokens. */
+.fi-body {
+  /* Actions and links */
+  --ripe-primary: #533afd;
+  --ripe-primary-hover: #4225ee;
+  --ripe-primary-pressed: #3416d8;
+  --ripe-primary-ring: rgba(83, 58, 253, 0.28);
+  --ripe-interactive: #5469d4;
+  --ripe-interactive-hover: #3d4eac;
+  --ripe-interactive-soft: #f0f2ff;
+  --ripe-danger: #e61947;
+  --ripe-danger-hover: #c0123c;
+  --ripe-danger-pressed: #a90f35;
+
+  /* Text */
+  --ripe-ink: #1a2c44;
+  --ripe-body: #273951;
+  --ripe-muted: #50617a;
+  --ripe-faint: #8792a2;
+  --ripe-disabled: #a3acb9;
+
+  /* Surfaces and keylines */
+  --ripe-canvas: #fff9f5;
+  --ripe-surface: #ffffff;
+  --ripe-surface-raised: #ffffff;
+  --ripe-surface-neutral: #f4f7fa;
+  --ripe-surface-hover: #f4f7fa;
+  --ripe-surface-selected: #f0f2ff;
+  --ripe-line: #d4dee9;
+  --ripe-hair: #ecf1f6;
+  --ripe-row-hover: #f7f9fc;
+  /* Translucent hover wash that works on any light surface (canvas or card). */
+  --ripe-tint-hover: rgba(26, 44, 68, 0.06);
+
+  /* Dark shell (header + sidebar share this color) */
+  --ripe-shell: #1a2233;
+  --ripe-shell-raised: #212b3f;
+  --ripe-shell-hover: #2a3549;
+  --ripe-shell-selected: rgba(118, 108, 255, 0.18);
+  --ripe-shell-line: #2c374d;
+  --ripe-shell-ink: #f8fafc;
+  --ripe-shell-body: #dbe2ee;
+  --ripe-shell-muted: #9aa6bc;
+  --ripe-shell-accent: #b4bcff;
+
+  /* Status palettes measured from SDK v9 renderers */
+  --ripe-info-bg: #e2fbfe;
+  --ripe-info-line: #a7e7fc;
+  --ripe-info-text: #045ad0;
+  --ripe-success-bg: #eafcdd;
+  --ripe-success-line: #a8f170;
+  --ripe-success-text: #217005;
+  --ripe-warning-bg: #fdf8c9;
+  --ripe-warning-line: #fbd992;
+  --ripe-warning-text: #b13600;
+  --ripe-danger-bg: #fef4f6;
+  --ripe-danger-line: #fbd3dc;
+  --ripe-danger-text: #c0123c;
+
+  /* Shape */
+  --ripe-radius-xs: 4px;
+  --ripe-radius: 6px;
+  --ripe-radius-lg: 8px;
+  --ripe-radius-pill: 9999px;
+
+  /* Type */
+  --ripe-font:
+    "Inter", "Inter var", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji",
+    "Segoe UI Symbol";
+  --ripe-fs-caption: 11px;
+  --ripe-fs-base: 13px;
+  --ripe-fs-heading: 15px;
+  --ripe-fs-page: 22px;
+  --ripe-lh-caption: 15px;
+  --ripe-lh-base: 19px;
+  --ripe-lh-heading: 22px;
+  --ripe-lh-page: 30px;
+
+  /* Spacing */
+  --ripe-space-xxs: 2px;
+  --ripe-space-xs: 4px;
+  --ripe-space-sm: 8px;
+  --ripe-space-md: 16px;
+  --ripe-space-lg: 24px;
+  --ripe-space-xl: 32px;
+  --ripe-space-2xl: 48px;
+
+  /* Elevation */
+  --ripe-shadow-control:
+    0 1px 1px rgba(16, 17, 26, 0.16), 0 0 0 1px var(--ripe-line);
+  --ripe-shadow-sm: 0 0 0 1px var(--ripe-line);
+  --ripe-shadow:
+    0 2px 5px rgba(48, 49, 61, 0.08), 0 1px 1px rgba(16, 17, 26, 0.12),
+    0 0 0 1px var(--ripe-line);
+  --ripe-shadow-lg:
+    0 12px 28px rgba(16, 17, 26, 0.18), 0 2px 6px rgba(16, 17, 26, 0.1),
+    0 0 0 1px var(--ripe-line);
+}

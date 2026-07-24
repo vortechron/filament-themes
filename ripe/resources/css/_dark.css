@@ -1,0 +1,73 @@
+/* Dark mode keeps the SDK hierarchy while using accessible dark surfaces. */
+.dark .fi-body {
+  color-scheme: dark;
+  --ripe-primary: #635bff;
+  --ripe-primary-hover: #533afd;
+  --ripe-primary-pressed: #4225ee;
+  --ripe-primary-ring: rgba(141, 132, 255, 0.3);
+  --ripe-interactive: #a7b1ff;
+  --ripe-interactive-hover: #c2c8ff;
+  --ripe-interactive-soft: rgba(118, 108, 255, 0.14);
+  --ripe-danger: #e61947;
+  --ripe-danger-hover: #d91843;
+  --ripe-danger-pressed: #c0123c;
+
+  --ripe-ink: #f4f7fa;
+  --ripe-body: #d6deea;
+  --ripe-muted: #a8b3c5;
+  --ripe-faint: #7d899e;
+  --ripe-disabled: #68758b;
+
+  --ripe-canvas: #0f1520;
+  --ripe-surface: #171f2e;
+  --ripe-surface-raised: #1b2536;
+  --ripe-surface-neutral: #202b3e;
+  --ripe-surface-hover: #253249;
+  --ripe-surface-selected: rgba(118, 108, 255, 0.14);
+  --ripe-line: #344158;
+  --ripe-hair: #273247;
+  --ripe-row-hover: #202b3e;
+  --ripe-tint-hover: rgba(255, 255, 255, 0.06);
+
+  /* Dark mode: shell sits a touch deeper than the canvas */
+  --ripe-shell: #0b101a;
+  --ripe-shell-raised: #141c2b;
+  --ripe-shell-hover: #1d2739;
+  --ripe-shell-selected: rgba(118, 108, 255, 0.18);
+  --ripe-shell-line: #232f45;
+  --ripe-shell-ink: #f4f7fa;
+  --ripe-shell-body: #c3cddd;
+  --ripe-shell-muted: #7d899e;
+  --ripe-shell-accent: #a7b1ff;
+
+  --ripe-info-bg: #102d46;
+  --ripe-info-line: #18567d;
+  --ripe-info-text: #8bdcf5;
+  --ripe-success-bg: #18341d;
+  --ripe-success-line: #316b36;
+  --ripe-success-text: #b8ef91;
+  --ripe-warning-bg: #3a2d13;
+  --ripe-warning-line: #755728;
+  --ripe-warning-text: #f7d67c;
+  --ripe-danger-bg: #3b1924;
+  --ripe-danger-line: #743147;
+  --ripe-danger-text: #ff9db1;
+}
+
+.dark .fi-body .fi-loading-section {
+  background: rgba(15, 21, 32, 0.76);
+}
+
+.dark .fi-body .fi-modal-close-overlay {
+  background: rgba(0, 0, 0, 0.72);
+}
+
+.dark .fi-body .fi-callout.fi-color,
+.dark .fi-body .fi-no-notification.fi-color {
+  color: var(--ripe-body);
+}
+
+.dark .fi-body .fi-btn.fi-disabled:not(.fi-force-enabled),
+.dark .fi-body .fi-btn[disabled]:not(.fi-force-enabled) {
+  background: var(--ripe-surface-neutral);
+}

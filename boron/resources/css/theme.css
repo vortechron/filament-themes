@@ -260,6 +260,32 @@
 }
 .fi-ta-header-toolbar { padding: 1rem 1.15rem; }
 
+/* When the table has a header toolbar, `overflow: hidden` is dropped so the
+   column/filter dropdowns can escape (Filament positions those panels
+   absolutely with teleport off, so any clipping ancestor cuts them off). But
+   the header toolbar's square-cornered background then paints over the
+   container's rounded top border, making the top edge look border-less. Fix by
+   rounding the top corners of the painted header elements themselves — no
+   overflow clip, so the dropdowns still escape.
+   DOM: .fi-ta-ctn > .fi-ta-main > .fi-ta-header-ctn > .fi-ta-header */
+.fi-ta-ctn-with-header .fi-ta-main,
+.fi-ta-ctn-with-header .fi-ta-header-ctn,
+.fi-ta-ctn-with-header .fi-ta-header {
+    border-start-start-radius: var(--boron-radius);
+    border-start-end-radius: var(--boron-radius);
+}
+
+/* Filament core pulls the header up 1px (margin-top: -1px) to fuse with its
+   ring-based container edge. Our container uses a real border, so that pull
+   paints the toolbar background OVER the card's top keyline and the table
+   looks border-less on top. Keep the header inside the border. */
+.fi-ta-header-ctn { margin-top: 0; }
+
+/* Keep the column-header row's top keyline the clip used to imply. */
+.fi-ta-ctn-with-header .fi-ta-table thead {
+    border-top: 1px solid var(--boron-border-soft);
+}
+
 .fi-ta-header-cell,
 .fi-ta-header-cell-sort-btn {
     color: var(--boron-muted);

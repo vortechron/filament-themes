@@ -1,0 +1,280 @@
+/*
+ * Content-layout patterns for custom panel pages.
+ *
+ * Filament's blade components cover controls (buttons, badges, sections) but
+ * not page content composition. These classes fill that gap for pages built
+ * from custom views: responsive card grids, metric meters, stat blocks, and
+ * pricing cards, all in the Stripe Apps SDK v9 voice. Everything reads from
+ * the `--ripe-*` tokens so dark mode and rebrands stay automatic.
+ */
+
+/* ------------------------------------------------------------- Grids ------ */
+
+.fi-body .ripe-grid {
+  display: grid;
+  gap: var(--ripe-space-lg);
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+@media (min-width: 640px) {
+  .fi-body .ripe-grid-2,
+  .fi-body .ripe-grid-3,
+  .fi-body .ripe-grid-4 {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (min-width: 1024px) {
+  .fi-body .ripe-grid-3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .fi-body .ripe-grid-4 {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ------------------------------------------------------------- Stacks ----- */
+
+.fi-body .ripe-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.fi-body .ripe-stack-xs {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ripe-space-xs);
+}
+
+/* Responsive "meta on the left, status on the right" summary row. */
+.fi-body .ripe-split {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+@media (min-width: 640px) {
+  .fi-body .ripe-split {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+  }
+}
+
+/* Standalone content headings between sections. */
+.fi-body .ripe-heading {
+  margin: 0;
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-heading);
+  line-height: var(--ripe-lh-heading);
+  font-weight: 600;
+}
+
+.fi-body .ripe-hint {
+  margin: 0;
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+/* ----------------------------------------------------- Headline number ---- */
+
+.fi-body .ripe-headline {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ripe-space-lg);
+}
+
+.fi-body .ripe-headline__total {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ripe-space-sm);
+}
+
+.fi-body .ripe-headline__count {
+  color: var(--ripe-ink);
+  font-size: 36px;
+  line-height: 1;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.fi-body .ripe-headline__label {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 500;
+}
+
+/* ------------------------------------------------------ Metric + meter ---- */
+
+/* One metric: label, right-aligned value, slim progress meter underneath. */
+.fi-body .ripe-metric {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ripe-space-sm);
+}
+
+.fi-body .ripe-metric__head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.fi-body .ripe-metric__name {
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 500;
+}
+
+.fi-body .ripe-metric__value {
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 700;
+  font-variant-numeric: tabular-nums;
+}
+
+.fi-body .ripe-meter {
+  height: 8px;
+  width: 100%;
+  overflow: hidden;
+  border-radius: var(--ripe-radius-pill);
+  background: var(--ripe-hair);
+}
+
+.fi-body .ripe-meter--lg {
+  height: 10px;
+}
+
+.fi-body .ripe-meter__fill {
+  height: 100%;
+  min-width: 2px;
+  border-radius: var(--ripe-radius-pill);
+  background: var(--ripe-primary);
+  transition: width 0.3s ease;
+}
+
+.fi-body .ripe-meter__fill--success {
+  background: var(--ripe-success-line);
+}
+
+.fi-body .ripe-meter__fill--info {
+  background: var(--ripe-interactive);
+}
+
+.fi-body .ripe-meter__fill--warning {
+  background: var(--ripe-warning-line);
+}
+
+.fi-body .ripe-meter__fill--danger {
+  background: var(--ripe-danger);
+}
+
+.fi-body .ripe-meter__fill--gray {
+  background: var(--ripe-faint);
+}
+
+/* -------------------------------------------------------- Stat blocks ----- */
+
+/* Label / big number / caption body for a stat card. */
+.fi-body .ripe-stat {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.fi-body .ripe-stat__label {
+  color: var(--ripe-muted);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+  font-weight: 500;
+}
+
+.fi-body .ripe-stat__value {
+  color: var(--ripe-ink);
+  font-size: 24px;
+  line-height: 1.2;
+  font-weight: 700;
+}
+
+.fi-body .ripe-stat__value-suffix {
+  color: var(--ripe-faint);
+  font-size: var(--ripe-fs-heading);
+  font-weight: 400;
+}
+
+.fi-body .ripe-stat__caption {
+  color: var(--ripe-faint);
+  font-size: var(--ripe-fs-caption);
+  line-height: var(--ripe-lh-caption);
+}
+
+/* ------------------------------------------------------ Pricing cards ----- */
+
+/* Card body inside a section; fills the height so footers align per row. */
+.fi-body .ripe-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ripe-space-md);
+  height: 100%;
+}
+
+.fi-body .ripe-card__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--ripe-space-sm);
+}
+
+.fi-body .ripe-card__name {
+  color: var(--ripe-ink);
+  font-size: var(--ripe-fs-heading);
+  line-height: var(--ripe-lh-heading);
+  font-weight: 700;
+}
+
+.fi-body .ripe-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: var(--ripe-space-xs);
+}
+
+.fi-body .ripe-card__price-amount {
+  color: var(--ripe-ink);
+  font-size: 30px;
+  line-height: 1;
+  font-weight: 700;
+}
+
+.fi-body .ripe-card__price-period {
+  color: var(--ripe-faint);
+  font-size: var(--ripe-fs-base);
+}
+
+.fi-body .ripe-card__features {
+  display: flex;
+  flex-direction: column;
+  gap: var(--ripe-space-xs);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  color: var(--ripe-body);
+  font-size: var(--ripe-fs-base);
+  line-height: var(--ripe-lh-base);
+}
+
+.fi-body .ripe-card__foot {
+  margin-top: auto;
+  padding-top: var(--ripe-space-sm);
+}
+
+/* Full-width action inside a card footer. */
+.fi-body .ripe-btn-block .fi-btn {
+  width: 100%;
+  justify-content: center;
+}
