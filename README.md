@@ -7,10 +7,23 @@ Four production-ready theme packages for **Filament 5**.
 Install this private repository once. It contains all four packages, but you
 activate **exactly one** in each Filament panel.
 
+This repository is private, so Composer needs a GitHub token before it can read
+it. Create a token with the **`repo`** scope, then run this once per machine:
+
 ```bash
-composer config repositories.vortechron-filament-themes vcs git@github.com:vortechron/filament-themes.git
-composer require vortechron/filament-themes:dev-main
+composer config --global github-oauth.github.com YOUR_GITHUB_TOKEN
 ```
+
+Then add the repository and install the release:
+
+```bash
+composer config repositories.vortechron-filament-themes vcs https://github.com/vortechron/filament-themes.git
+composer require vortechron/filament-themes:^1.0
+```
+
+Use the **HTTPS** URL, not `git@github.com:...`. With the SSH URL Composer
+clones over SSH instead of using the GitHub API, which fails in non-interactive
+shells and CI with `Host key verification failed`.
 
 Then add the relevant import and append **one** plugin call to the existing
 panel chain in `app/Providers/Filament/AdminPanelProvider.php`:
@@ -91,31 +104,42 @@ only import the selected plugin class and add it to the target panel.
 
 ## Use a tagged release in production
 
-Your deployment environment needs GitHub access to this private repository.
-Add this repository to the Laravel application's `composer.json`:
+`v1.0.0` is tagged. Add this repository to the Laravel application's
+`composer.json`:
 
 ```json
 {
     "repositories": [
         {
             "type": "vcs",
-            "url": "git@github.com:vortechron/filament-themes.git"
+            "url": "https://github.com/vortechron/filament-themes.git"
         }
     ]
 }
 ```
 
-When `v1.0.0` is tagged, install it with:
+Then install it:
 
 ```bash
 composer require vortechron/filament-themes:^1.0
 ```
 
-Until that first tag exists, development installs use:
+To track the branch instead of a release, use
+`composer require vortechron/filament-themes:dev-main`.
 
-```bash
-composer require vortechron/filament-themes:dev-main
+Your deployment environment also needs read access to this private repository.
+Do not commit a token. Write `auth.json` next to `composer.json` at deploy time
+and keep it out of git:
+
+```json
+{
+    "github-oauth": {
+        "github.com": "YOUR_GITHUB_TOKEN"
+    }
+}
 ```
+
+Add `auth.json` to the application's `.gitignore`.
 
 Use the panel registration and setup commands in [Start here: pick one theme](#start-here-pick-one-theme).
 
