@@ -1,0 +1,17 @@
+/*
+ * Material's source entrypoint.
+ *
+ * The modules below map the public Material Design 3 specification — its
+ * baseline colour scheme, type scale, shape scale, elevation levels, state
+ * layers and motion easing — onto Filament 5's public `fi-*` hooks. Keep this
+ * file as the stable import target for downstream custom builds.
+ */
+@import './_tokens.css';
+@import './_foundations.css';
+@import './_navigation.css';
+@import './_components.css';
+@import './_forms.css';
+@import './_data.css';
+@import './_feedback.css';
+@import './_patterns.css';
+@import './_dark.css';

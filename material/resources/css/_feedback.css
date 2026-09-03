@@ -1,0 +1,216 @@
+/*
+ * Feedback: notifications, callouts, the wizard stepper and global search.
+ *
+ * Material 3 renders a transient message as a snackbar: an inverse-surface
+ * pill with inverse-on-surface text at elevation 3. Filament's notifications
+ * are the closest equivalent, so they are restyled that way.
+ */
+
+/* --- Snackbar (notification) ------------------------------------------ */
+.fi-body .fi-no-notification {
+    background-color: var(--md-inverse-surface);
+    color: var(--md-inverse-on-surface);
+    border: 0;
+    border-radius: var(--md-shape-xs);
+    box-shadow: var(--md-elevation-3);
+    padding: 0.875rem 1rem;
+}
+
+.fi-body .fi-no-notification-title {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    font-weight: 400;
+    color: var(--md-inverse-on-surface);
+}
+
+.fi-body .fi-no-notification-body {
+    font-size: var(--md-body-sm-size);
+    line-height: var(--md-body-sm-line);
+    color: var(--md-inverse-on-surface);
+    opacity: 0.85;
+}
+
+.fi-body .fi-no-notification-date {
+    font-size: var(--md-label-sm-size);
+    color: var(--md-inverse-on-surface);
+    opacity: 0.7;
+}
+
+/* Status colours stay legible against the inverse surface. */
+.fi-body .fi-no-notification-icon.fi-color-success {
+    color: var(--md-success-container);
+}
+
+.fi-body .fi-no-notification-icon.fi-color-danger {
+    color: var(--md-error-container);
+}
+
+.fi-body .fi-no-notification-icon.fi-color-warning {
+    color: var(--md-warning-container);
+}
+
+.fi-body .fi-no-notification-icon.fi-color-info {
+    color: var(--md-info-container);
+}
+
+.fi-body .fi-no-notification .fi-btn,
+.fi-body .fi-no-notification .fi-icon-btn {
+    color: var(--md-inverse-primary);
+}
+
+/* --- Callouts ---------------------------------------------------------- */
+.fi-body .fi-callout {
+    border: 0;
+    border-radius: var(--md-shape-md);
+    box-shadow: none;
+    padding: 1rem;
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-callout-heading {
+    font-size: var(--md-title-sm-size);
+    line-height: var(--md-title-sm-line);
+    font-weight: 500;
+}
+
+.fi-body .fi-callout-description {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-callout.fi-color-primary {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+.fi-body .fi-callout.fi-color-danger {
+    background-color: var(--md-error-container);
+    color: var(--md-on-error-container);
+}
+
+.fi-body .fi-callout.fi-color-success {
+    background-color: var(--md-success-container);
+    color: var(--md-on-success-container);
+}
+
+.fi-body .fi-callout.fi-color-warning {
+    background-color: var(--md-warning-container);
+    color: var(--md-on-warning-container);
+}
+
+.fi-body .fi-callout.fi-color-info {
+    background-color: var(--md-info-container);
+    color: var(--md-on-info-container);
+}
+
+.fi-body .fi-callout-icon {
+    color: currentColor;
+}
+
+/* --- Wizard stepper ---------------------------------------------------- */
+.fi-body .fi-sc-wizard-header {
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+    padding-block: 1rem;
+}
+
+.fi-body .fi-sc-wizard-header-step-icon-ctn {
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface-variant);
+    border: 0;
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-sc-wizard-header-step.fi-active .fi-sc-wizard-header-step-icon-ctn {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+}
+
+.fi-body .fi-sc-wizard-header-step.fi-completed .fi-sc-wizard-header-step-icon-ctn {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+.fi-body .fi-sc-wizard-header-step-label {
+    font-size: var(--md-title-sm-size);
+    font-weight: 500;
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-sc-wizard-header-step.fi-active .fi-sc-wizard-header-step-label {
+    color: var(--md-primary);
+}
+
+.fi-body .fi-sc-wizard-header-step-description {
+    font-size: var(--md-body-sm-size);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-sc-wizard-header-step-separator {
+    background-color: var(--md-outline-variant);
+}
+
+.fi-body .fi-sc-wizard-header-step-btn {
+    border-radius: var(--md-shape-full);
+}
+
+/* --- Global search ------------------------------------------------------ */
+.fi-body .fi-global-search-field .fi-input-wrp {
+    background-color: var(--md-surface-container-high);
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-global-search-field .fi-input-wrp::after {
+    display: none;
+}
+
+.fi-body .fi-global-search-field .fi-input {
+    padding-block: 0.625rem;
+    font-size: var(--md-body-lg-size);
+}
+
+.fi-body .fi-global-search-results-ctn {
+    background-color: var(--md-surface-container);
+    border: 0;
+    border-radius: var(--md-shape-lg);
+    box-shadow: var(--md-elevation-2);
+    overflow: hidden;
+}
+
+.fi-body .fi-global-search-result-heading {
+    font-size: var(--md-label-md-size);
+    letter-spacing: var(--md-tracking-label-md);
+    font-weight: 500;
+    text-transform: none;
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-global-search-result-link {
+    min-height: 3rem;
+    border-radius: 0;
+    color: var(--md-on-surface);
+    transition: background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-global-search-result-link:hover {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-state-hover));
+}
+
+.fi-body .fi-global-search-result-detail-label {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-body-sm-size);
+}
+
+.fi-body .fi-global-search-no-results-message {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-body-md-size);
+}
+
+/* --- Loading ------------------------------------------------------------ */
+.fi-body .fi-loading-section {
+    background-color: rgb(var(--md-scrim) / 0.08);
+    border-radius: inherit;
+}

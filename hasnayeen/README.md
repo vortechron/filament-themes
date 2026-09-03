@@ -1,4 +1,4 @@
-# Hasnayeen Themes for Filament 5
+# Hasnayeen — theme switcher for Filament 5
 
 A Filament 5 appearance switcher with four bundled themes: Default, Dracula,
 Nord, and Sunset. It supports per-user preferences or one global preference.
@@ -31,7 +31,10 @@ php artisan filament-hasnayeen:install --no-interaction
 php artisan migrate
 ```
 
-Register the plugin in the target panel provider:
+## Register
+
+Append **one** plugin call to the existing panel chain in
+`app/Providers/Filament/AdminPanelProvider.php`:
 
 ```php
 use Filament\Panel;
@@ -40,20 +43,38 @@ use Vortechron\FilamentHasnayeen\HasnayeenPlugin;
 public function panel(Panel $panel): Panel
 {
     return $panel
-        // ...
+        // ... your existing configuration
         ->plugin(HasnayeenPlugin::make());
 }
 ```
 
-Publish package assets and clear cached configuration:
+Publish Filament's package assets:
 
 ```bash
 php artisan filament:assets
 php artisan optimize:clear
 ```
 
+No npm or Vite change is required in the consuming application. Hasnayeen
+already contains four selectable visual themes, so do not register a second
+theme plugin on the same panel.
+
 The plugin registers its middleware, appearance page, user-menu item, and
 styles automatically. Do not add `ApplyTheme` manually.
+
+## Options
+
+```php
+HasnayeenPlugin::make()
+    // Hide the Appearance page and its user-menu item from some users.
+    ->canViewAppearancePage(fn (): bool => auth()->user()?->is_admin === true)
+    // Add your own theme classes alongside the four bundled ones.
+    ->registerThemes(['company' => \App\Filament\Themes\CompanyTheme::class])
+```
+
+Hasnayeen is a theme switcher, not a single visual theme. It has no
+`withoutColors()`, `withoutFont()` or `withoutStyles()` toggle, because each
+bundled theme supplies its own palette and stylesheet at request time.
 
 ## Choose the storage mode
 
@@ -76,16 +97,7 @@ For one shared choice stored in the application cache:
 Global mode does not read the user columns, but keeping the migration applied
 makes switching modes safe.
 
-## Restrict access
-
-```php
-->plugin(
-    HasnayeenPlugin::make()
-        ->canViewAppearancePage(fn (): bool => auth()->user()?->is_admin === true)
-)
-```
-
-## Register a custom theme
+## Customize
 
 Create a class implementing
 `Vortechron\FilamentHasnayeen\Contracts\Theme`, then register it through the
@@ -103,7 +115,18 @@ The array key must match the value returned by `name()`. The stylesheet
 returned by `stylesheetPath()` must be a readable, local, production-built CSS
 file. After adding or changing theme assets, run `php artisan filament:assets`.
 
-## Production notes
+## Package development
+
+Hasnayeen ships hand-written CSS in `resources/dist/` and has no build step.
+Edit those files directly; there is no `package.json` and nothing to compile.
+Run `./scripts/verify.sh` from the repository root after any change.
+
+## Production check
+
+Confirm the panel login, the Appearance page, the user-menu item, and every
+bundled theme in both light and dark mode after each Filament major upgrade.
+
+Notes for production:
 
 - The package does not load preview images or styles from third-party hosts.
 - Selected theme values are validated before they are saved.

@@ -1,0 +1,15 @@
+{
+  "name": "@vortechron/filament-material-build",
+  "version": "1.0.0",
+  "description": "Build tooling for the Material Design 3 FilamentPHP 5 theme.",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "build": "esbuild ./resources/css/dist-entry.css --bundle --minify --outfile=./resources/dist/theme.css",
+    "build:pretty": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./resources/dist/theme.css",
+    "dev": "esbuild ./resources/css/dist-entry.css --bundle --outfile=./resources/dist/theme.css --watch"
+  },
+  "devDependencies": {
+    "esbuild": "^0.25.0"
+  }
+}

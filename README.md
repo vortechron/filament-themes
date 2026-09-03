@@ -1,10 +1,10 @@
 # Vortechron Filament Themes
 
-Three production-ready theme packages for **Filament 5**.
+Four production-ready theme packages for **Filament 5**.
 
 ## Start here: pick one theme
 
-Install this private repository once. It contains all three packages, but you
+Install this private repository once. It contains all four packages, but you
 activate **exactly one** in each Filament panel.
 
 ```bash
@@ -33,6 +33,15 @@ use Vortechron\FilamentRipe\RipePlugin;
 ->plugin(RipePlugin::make())
 ```
 
+### Material — Material Design 3 admin UI
+
+```php
+use Vortechron\FilamentMaterial\MaterialPlugin;
+
+// Append before the final semicolon in panel():
+->plugin(MaterialPlugin::make())
+```
+
 ### Hasnayeen — users can choose Default, Dracula, Nord, or Sunset
 
 ```php
@@ -45,7 +54,7 @@ use Vortechron\FilamentHasnayeen\HasnayeenPlugin;
 Run the setup command for the selected theme:
 
 ```bash
-# Boron or Ripe
+# Boron, Ripe or Material
 php artisan filament:assets
 
 # Hasnayeen
@@ -63,6 +72,7 @@ contains four selectable visual themes and should be used by itself.
 | --- | --- | --- | --- |
 | [Boron](boron/README.md) | Neubrutalist cream, sage, and black admin UI | None | Register one plugin |
 | [Ripe](ripe/README.md) | Stripe Apps SDK v9-style components and dashboards | None | Register one plugin |
+| [Material](material/README.md) | Google Material Design 3 look: tonal palette, Roboto, state layers | None | Register one plugin |
 | [Hasnayeen](hasnayeen/README.md) | Let users switch between Default, Dracula, Nord, and Sunset | None | Run its install command and migration |
 
 ## Consistent package API
@@ -73,6 +83,7 @@ Every theme follows the same naming convention:
 | --- | --- | --- | --- |
 | Boron | `vortechron/filament-boron` | `Vortechron\FilamentBoron` | `BoronPlugin` |
 | Ripe | `vortechron/filament-ripe` | `Vortechron\FilamentRipe` | `RipePlugin` |
+| Material | `vortechron/filament-material` | `Vortechron\FilamentMaterial` | `MaterialPlugin` |
 | Hasnayeen | `vortechron/filament-hasnayeen` | `Vortechron\FilamentHasnayeen` | `HasnayeenPlugin` |
 
 Laravel discovers each package service provider automatically. Applications
@@ -127,11 +138,13 @@ repository to the consuming application's `composer.json`:
 }
 ```
 
-Replace `boron` with `ripe` or `hasnayeen`, then require the matching package:
+Replace `boron` with `ripe`, `material`, or `hasnayeen`, then require the
+matching package:
 
 ```bash
 composer require vortechron/filament-boron:@dev
 # composer require vortechron/filament-ripe:@dev
+# composer require vortechron/filament-material:@dev
 # composer require vortechron/filament-hasnayeen:@dev
 ```
 
@@ -156,8 +169,10 @@ Run before tagging a release:
 ./scripts/verify.sh
 ```
 
-The script validates every Composer manifest, lints all PHP, checks required
-assets, and rebuilds Ripe's committed stylesheet.
+The script validates every Composer manifest, lints all PHP, enforces the
+naming rules, package layout, plugin API and README section order defined in
+[`AGENTS.md`](AGENTS.md), checks required assets, rejects remote CSS imports,
+and confirms the committed Ripe and Material stylesheets are up to date.
 
 Before a release, also run the clean consumer integration suite:
 
@@ -166,8 +181,9 @@ Before a release, also run the clean consumer integration suite:
 ```
 
 It installs each package independently in a temporary Laravel 12 / Filament 5
-application and verifies provider discovery, panel boot, published assets,
-Hasnayeen's migration, and its authenticated Appearance page.
+application and verifies provider discovery, panel boot, published assets, the
+Vite publish stub, the absence of any third-party font CDN request, Hasnayeen's
+migration, and its authenticated Appearance page.
 
 ## Support policy
 
@@ -182,3 +198,6 @@ be tested and released as a deliberate compatibility update.
 ## License
 
 MIT. Hasnayeen includes attribution to its original author in its package.
+Material bundles the Roboto font under the SIL Open Font License 1.1 and follows the
+publicly published Material Design 3 specification; it is an independent
+implementation and is not affiliated with or endorsed by Google.

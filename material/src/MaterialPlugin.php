@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace Vortechron\FilamentRipe;
+namespace Vortechron\FilamentMaterial;
 
 use Filament\Contracts\Plugin;
 use Filament\FontProviders\LocalFontProvider;
@@ -11,16 +11,16 @@ use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Font;
 
 /**
- * Ripe theme plugin for Filament.
+ * Material 3 theme plugin for Filament.
  *
- * Applies the Ripe palette, the bundled Inter font and the prebuilt stylesheet
- * to one panel.
+ * Applies the Material 3 baseline palette, the bundled Roboto font and the
+ * prebuilt stylesheet to one panel.
  */
-class RipePlugin implements Plugin
+class MaterialPlugin implements Plugin
 {
-    public const ASSET_PACKAGE = 'vortechron/filament-ripe';
+    public const ASSET_PACKAGE = 'vortechron/filament-material';
 
-    public const ID = 'vortechron-ripe';
+    public const ID = 'vortechron-material';
 
     protected bool $applyColors = true;
 
@@ -39,7 +39,7 @@ class RipePlugin implements Plugin
     }
 
     /**
-     * Skip Ripe's colour palette (keep the panel's existing colours).
+     * Skip the Material 3 palette (keep the panel's existing colours).
      */
     public function withoutColors(): static
     {
@@ -49,7 +49,7 @@ class RipePlugin implements Plugin
     }
 
     /**
-     * Skip loading the bundled Inter font.
+     * Skip loading the bundled Roboto font.
      */
     public function withoutFont(): static
     {
@@ -59,7 +59,7 @@ class RipePlugin implements Plugin
     }
 
     /**
-     * Skip loading Ripe's stylesheet.
+     * Skip loading the Material stylesheet.
      */
     public function withoutStyles(): static
     {
@@ -71,18 +71,18 @@ class RipePlugin implements Plugin
     public function register(Panel $panel): void
     {
         if ($this->applyColors) {
-            $panel->colors(RipeTheme::colors());
+            $panel->colors(MaterialTheme::colors());
         }
 
         if ($this->applyFont) {
-            $font = Font::make('inter', __DIR__.'/../resources/fonts/inter');
+            $font = Font::make('roboto', __DIR__.'/../resources/fonts/roboto');
 
             $panel
                 ->assets([
                     $font,
                 ], package: self::ASSET_PACKAGE)
                 ->font(
-                    'Inter',
+                    'Roboto',
                     url: fn (): string => asset($font->getRelativePublicPath().'/index.css'),
                     provider: LocalFontProvider::class,
                 );

@@ -1,0 +1,394 @@
+/*
+ * Forms: Material 3 filled text fields, checkboxes, radios and switches.
+ *
+ * A Material filled text field is a surface-container-highest box whose top
+ * corners are rounded to 4px and whose bottom corners are square. The bottom
+ * edge carries the "active indicator": 1px in the resting state, 2px primary
+ * while focused, and error-coloured when invalid.
+ */
+
+/* --- Field labels and messages --------------------------------------- */
+.fi-body .fi-fo-field-label-content {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    font-weight: 500;
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-fo-field-wrp-error-message {
+    font-size: var(--md-body-sm-size);
+    line-height: var(--md-body-sm-line);
+    color: var(--md-error);
+    padding-inline-start: 1rem;
+}
+
+/* --- Filled text field ------------------------------------------------ */
+.fi-body .fi-input-wrp {
+    position: relative;
+    background-color: var(--md-surface-container-highest);
+    border: 0;
+    border-radius: var(--md-shape-xs) var(--md-shape-xs) 0 0;
+    box-shadow: none;
+    overflow: hidden;
+    transition: background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+/* The active indicator lives on ::after so it can thicken without shifting
+   the field's height. */
+.fi-body .fi-input-wrp::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 1px;
+    background-color: var(--md-on-surface-variant);
+    transition:
+        height var(--md-duration-short) var(--md-ease-standard),
+        background-color var(--md-duration-short) var(--md-ease-standard);
+    pointer-events: none;
+}
+
+.fi-body .fi-input-wrp:not(.fi-disabled):hover {
+    background-color: color-mix(
+        in srgb,
+        var(--md-surface-container-highest) 92%,
+        rgb(var(--md-state-on-surface))
+    );
+}
+
+.fi-body .fi-input-wrp:not(.fi-disabled):hover::after {
+    background-color: var(--md-on-surface);
+}
+
+.fi-body .fi-input-wrp:not(.fi-disabled):focus-within::after {
+    height: 2px;
+    background-color: var(--md-primary);
+}
+
+.fi-body .fi-input-wrp.fi-invalid::after {
+    background-color: var(--md-error);
+}
+
+.fi-body .fi-input-wrp.fi-invalid:focus-within::after {
+    height: 2px;
+    background-color: var(--md-error);
+}
+
+.fi-body .fi-input-wrp.fi-disabled {
+    background-color: rgb(var(--md-state-on-surface) / 0.04);
+}
+
+.fi-body .fi-input-wrp.fi-disabled::after {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+}
+
+.fi-body .fi-input {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--md-on-surface);
+    font-size: var(--md-body-lg-size);
+    line-height: var(--md-body-lg-line);
+    letter-spacing: 0.03125em;
+    padding-block: 0.9375rem 0.5rem;
+    padding-inline: 1rem;
+}
+
+.fi-body .fi-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.fi-body .fi-input::placeholder {
+    color: var(--md-on-surface-variant);
+    opacity: 1;
+}
+
+.fi-body .fi-input:disabled {
+    color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+}
+
+.fi-body .fi-input-wrp-prefix,
+.fi-body .fi-input-wrp-suffix {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-body-lg-size);
+}
+
+.fi-body .fi-input-wrp-label {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-body-md-size);
+}
+
+/* --- Select and textarea --------------------------------------------- */
+.fi-body .fi-select-input {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--md-on-surface);
+    font-size: var(--md-body-lg-size);
+    padding-block: 0.9375rem 0.5rem;
+    padding-inline: 1rem;
+}
+
+.fi-body .fi-select-input:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+.fi-body .fi-select-input-placeholder {
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-select-input-option {
+    min-height: 3rem;
+    border-radius: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-select-input-option.fi-selected {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+}
+
+.fi-body .fi-select-input-btn {
+    color: var(--md-on-surface-variant);
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-fo-textarea-wrp {
+    background-color: var(--md-surface-container-highest);
+    border: 0;
+    border-radius: var(--md-shape-xs) var(--md-shape-xs) 0 0;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+
+.fi-body .fi-fo-textarea-wrp::after {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 1px;
+    background-color: var(--md-on-surface-variant);
+    transition: height var(--md-duration-short) var(--md-ease-standard);
+    pointer-events: none;
+}
+
+.fi-body .fi-fo-textarea-wrp:focus-within::after {
+    height: 2px;
+    background-color: var(--md-primary);
+}
+
+.fi-body .fi-fo-textarea {
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    color: var(--md-on-surface);
+    font-size: var(--md-body-lg-size);
+    line-height: var(--md-body-lg-line);
+    padding: 1rem;
+}
+
+.fi-body .fi-fo-textarea:focus {
+    outline: none;
+    box-shadow: none;
+}
+
+/* --- Checkbox --------------------------------------------------------- */
+.fi-body .fi-checkbox-input {
+    width: 1.125rem;
+    height: 1.125rem;
+    border-radius: 2px;
+    border: 2px solid var(--md-on-surface-variant);
+    background-color: transparent;
+    background-image: none;
+    transition:
+        background-color var(--md-duration-short) var(--md-ease-standard),
+        border-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-checkbox-input:checked,
+.fi-body .fi-checkbox-input:indeterminate {
+    background-color: var(--md-primary);
+    border-color: var(--md-primary);
+    color: var(--md-on-primary);
+}
+
+.fi-body .fi-checkbox-input:focus-visible {
+    outline: 3px solid var(--md-primary);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+.fi-body .fi-checkbox-input.fi-invalid,
+.fi-body .fi-checkbox-input[aria-invalid='true'] {
+    border-color: var(--md-error);
+}
+
+.fi-body .fi-checkbox-input.fi-invalid:checked,
+.fi-body .fi-checkbox-input[aria-invalid='true']:checked {
+    background-color: var(--md-error);
+    border-color: var(--md-error);
+}
+
+.fi-body .fi-checkbox-input:disabled {
+    border-color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+    background-color: transparent;
+}
+
+.fi-body .fi-checkbox-input:disabled:checked {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+    border-color: transparent;
+}
+
+/* --- Radio ------------------------------------------------------------ */
+.fi-body .fi-radio-input {
+    width: 1.25rem;
+    height: 1.25rem;
+    border: 2px solid var(--md-on-surface-variant);
+    background-color: transparent;
+    background-image: none;
+    color: var(--md-primary);
+}
+
+.fi-body .fi-radio-input:checked {
+    border-color: var(--md-primary);
+    background-color: transparent;
+    /* Material draws the inner dot inside the ring, not a filled circle. */
+    box-shadow: inset 0 0 0 4px var(--md-primary);
+}
+
+.fi-body .fi-radio-input:focus-visible {
+    outline: 3px solid var(--md-primary);
+    outline-offset: 2px;
+}
+
+.fi-body .fi-radio-input:disabled {
+    border-color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+}
+
+.fi-body .fi-fo-radio-label-text,
+.fi-body .fi-fo-checkbox-list-option-label {
+    font-size: var(--md-body-lg-size);
+    line-height: var(--md-body-lg-line);
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-fo-radio-label-description,
+.fi-body .fi-fo-checkbox-list-option-description {
+    font-size: var(--md-body-md-size);
+    color: var(--md-on-surface-variant);
+}
+
+/* --- Switch ----------------------------------------------------------- */
+.fi-body .fi-toggle {
+    width: 3.25rem;
+    height: 2rem;
+    border-radius: var(--md-shape-full);
+    border: 2px solid var(--md-outline);
+    background-color: var(--md-surface-container-highest);
+    transition:
+        background-color var(--md-duration-short) var(--md-ease-standard),
+        border-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-toggle.fi-toggle-on {
+    background-color: var(--md-primary);
+    border-color: var(--md-primary);
+}
+
+.fi-body .fi-toggle.fi-toggle-off {
+    background-color: var(--md-surface-container-highest);
+    border-color: var(--md-outline);
+}
+
+/* Material grows the thumb from 16px to 24px when the switch turns on. */
+.fi-body .fi-toggle > span:not([class*='sr-only']) {
+    background-color: var(--md-outline);
+    box-shadow: none;
+    transition:
+        transform var(--md-duration-short) var(--md-ease-emphasized),
+        width var(--md-duration-short) var(--md-ease-emphasized),
+        height var(--md-duration-short) var(--md-ease-emphasized),
+        background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-toggle.fi-toggle-on > span:not([class*='sr-only']) {
+    background-color: var(--md-on-primary);
+}
+
+.fi-body .fi-toggle:focus-visible {
+    outline: 3px solid var(--md-primary);
+    outline-offset: 2px;
+    box-shadow: none;
+}
+
+.fi-body .fi-toggle.fi-invalid,
+.fi-body .fi-toggle[aria-invalid='true'] {
+    border-color: var(--md-error);
+}
+
+.fi-body .fi-toggle:disabled,
+.fi-body .fi-toggle[disabled] {
+    opacity: var(--md-disabled-container-opacity);
+}
+
+/* --- Composite form widgets ------------------------------------------- */
+.fi-body .fi-fo-repeater-item,
+.fi-body .fi-fo-builder-item {
+    background-color: var(--md-surface-container-lowest);
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-shape-md);
+    box-shadow: none;
+}
+
+.fi-body .fi-fo-repeater-item-header,
+.fi-body .fi-fo-builder-item-header {
+    background-color: var(--md-surface-container-low);
+    border-block-end: 1px solid var(--md-outline-variant);
+}
+
+.fi-body .fi-fo-tags-input-wrp,
+.fi-body .fi-fo-key-value-table-ctn,
+.fi-body .fi-fo-file-upload-input-ctn,
+.fi-body .fi-fo-rich-editor,
+.fi-body .fi-fo-markdown-editor,
+.fi-body .fi-fo-code-editor {
+    border-radius: var(--md-shape-xs);
+    border-color: var(--md-outline-variant);
+    background-color: var(--md-surface-container-highest);
+}
+
+.fi-body .fi-fo-rich-editor-toolbar {
+    background-color: var(--md-surface-container);
+    border-color: var(--md-outline-variant);
+}
+
+.fi-body .fi-fo-date-time-picker-panel,
+.fi-body .fi-fo-color-picker-panel {
+    background-color: var(--md-surface-container-high);
+    border: 0;
+    border-radius: var(--md-shape-lg);
+    box-shadow: var(--md-elevation-2);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day {
+    border-radius: var(--md-shape-full);
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day:hover {
+    background-color: var(--md-surface-container-highest);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day.fi-selected {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+}
+
+.fi-body .fi-fo-date-time-picker-calendar-day-today:not(.fi-selected) {
+    border: 1px solid var(--md-primary);
+    color: var(--md-primary);
+}

@@ -1,0 +1,245 @@
+/*
+ * Navigation: the top app bar, the navigation drawer, breadcrumbs and tabs.
+ *
+ * Material 3 draws the drawer as a flat surface-container panel and marks the
+ * active destination with a fully rounded "pill" filled with the secondary
+ * container colour. That pill is the single most recognisable part of the
+ * system, so it is built here rather than tinted onto Filament's default.
+ */
+
+/* --- Top app bar ---------------------------------------------------- */
+.fi-body .fi-topbar > nav,
+.fi-body .fi-topbar-ctn {
+    background-color: var(--md-surface-container);
+    border: 0;
+    box-shadow: none;
+}
+
+.fi-body .fi-topbar > nav {
+    min-height: var(--md-topbar-height);
+}
+
+/* Material raises the bar only once content scrolls under it. */
+.fi-body .fi-topbar-ctn {
+    transition: box-shadow var(--md-duration-medium) var(--md-ease-standard);
+}
+
+.fi-body .fi-topbar-item-btn {
+    border-radius: var(--md-shape-full);
+    font-size: var(--md-label-lg-size);
+    line-height: var(--md-label-lg-line);
+    letter-spacing: var(--md-tracking-label-lg);
+    font-weight: 500;
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-topbar-item.fi-active .fi-topbar-item-btn {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+}
+
+/* --- Navigation drawer ---------------------------------------------- */
+.fi-body .fi-sidebar {
+    background-color: var(--md-surface-container-low);
+    border-inline-end: 0;
+    box-shadow: none;
+}
+
+.fi-body .fi-sidebar-header {
+    background-color: var(--md-surface-container-low);
+    border-block-end: 0;
+    box-shadow: none;
+    min-height: var(--md-topbar-height);
+}
+
+.fi-body .fi-sidebar-nav {
+    padding-inline: 0.75rem;
+    gap: 0.25rem;
+}
+
+/* Section labels use the M3 title-small role. */
+.fi-body .fi-sidebar-group-label {
+    font-size: var(--md-title-sm-size);
+    line-height: var(--md-title-sm-line);
+    letter-spacing: 0.00714em;
+    font-weight: 500;
+    text-transform: none;
+    color: var(--md-on-surface-variant);
+    padding-inline: 1rem;
+}
+
+.fi-body .fi-sidebar-group-btn {
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-sidebar-group-collapse-btn {
+    color: var(--md-on-surface-variant);
+    border-radius: var(--md-shape-full);
+}
+
+/* The destination pill. */
+.fi-body .fi-sidebar-item-btn {
+    position: relative;
+    isolation: isolate;
+    min-height: var(--md-nav-item-height);
+    padding-inline: 1rem;
+    gap: 0.75rem;
+    border-radius: var(--md-shape-full);
+    background-color: transparent;
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-label-lg-size);
+    line-height: var(--md-label-lg-line);
+    letter-spacing: var(--md-tracking-label-lg);
+    font-weight: 500;
+    transition:
+        background-color var(--md-duration-short) var(--md-ease-standard),
+        color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-sidebar-item-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(var(--md-state-on-surface));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.fi-body .fi-sidebar-item-btn:hover::after {
+    opacity: var(--md-state-hover);
+}
+
+.fi-body .fi-sidebar-item-btn:active::after {
+    opacity: var(--md-state-pressed);
+}
+
+.fi-body .fi-sidebar-item-icon {
+    color: var(--md-on-surface-variant);
+    width: 1.5rem;
+    height: 1.5rem;
+    flex-shrink: 0;
+}
+
+.fi-body .fi-sidebar-item-label {
+    font-weight: 500;
+}
+
+/* Active destination: filled secondary-container pill. */
+.fi-body .fi-sidebar-item.fi-active .fi-sidebar-item-btn {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+    font-weight: 500;
+}
+
+.fi-body .fi-sidebar-item.fi-active .fi-sidebar-item-icon {
+    color: var(--md-on-secondary-container);
+}
+
+.fi-body .fi-sidebar-item.fi-active .fi-sidebar-item-btn::after {
+    background-color: rgb(var(--md-state-on-surface));
+}
+
+/* A collapsed parent whose child is active gets a softer hint. */
+.fi-body .fi-sidebar-item-has-active-child-items > .fi-sidebar-item-btn {
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-sidebar-item-badge-ctn .fi-badge {
+    background-color: var(--md-error);
+    color: var(--md-on-error);
+}
+
+.fi-body .fi-sidebar-footer {
+    border-block-start: 1px solid var(--md-outline-variant);
+    background-color: var(--md-surface-container-low);
+}
+
+/* Collapsed rail: Material narrows the pill to a circle. */
+.fi-body .fi-sidebar.fi-collapsed .fi-sidebar-item-btn {
+    justify-content: center;
+    padding-inline: 0;
+    border-radius: var(--md-shape-full);
+}
+
+/* --- Breadcrumbs ---------------------------------------------------- */
+.fi-body .fi-breadcrumbs-item-label {
+    font-size: var(--md-body-sm-size);
+    line-height: var(--md-body-sm-line);
+    color: var(--md-on-surface-variant);
+    font-weight: 500;
+}
+
+.fi-body .fi-breadcrumbs-item:last-child .fi-breadcrumbs-item-label {
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-breadcrumbs-item-separator {
+    color: var(--md-outline);
+}
+
+/* --- Tabs ------------------------------------------------------------ */
+.fi-body .fi-tabs {
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+    border-radius: 0;
+    box-shadow: none;
+    padding: 0;
+    gap: 0;
+}
+
+.fi-body .fi-tabs-item {
+    position: relative;
+    isolation: isolate;
+    border-radius: 0;
+    background-color: transparent;
+    color: var(--md-on-surface-variant);
+    padding: 0.875rem 1rem;
+    font-size: var(--md-title-sm-size);
+    line-height: var(--md-title-sm-line);
+    font-weight: 500;
+    transition: color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-tabs-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgb(var(--md-state-on-surface));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.fi-body .fi-tabs-item:hover::after {
+    opacity: var(--md-state-hover);
+}
+
+/* Active tab: primary label plus the 3px rounded indicator underneath. */
+.fi-body .fi-tabs-item.fi-active {
+    background-color: transparent;
+    color: var(--md-primary);
+    box-shadow: none;
+}
+
+.fi-body .fi-tabs-item.fi-active::before {
+    content: '';
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 0;
+    height: 3px;
+    border-start-start-radius: 3px;
+    border-start-end-radius: 3px;
+    background-color: var(--md-primary);
+}
+
+.fi-body .fi-tabs-item.fi-active .fi-tabs-item-label {
+    color: var(--md-primary);
+}
+
+.fi-body .fi-tabs-item .fi-icon {
+    color: currentColor;
+}

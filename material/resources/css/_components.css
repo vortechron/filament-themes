@@ -1,0 +1,470 @@
+/*
+ * Components: buttons, cards, dialogs, menus, chips and avatars.
+ *
+ * Material 3 sizing used here: the common button is 40px tall with a fully
+ * rounded shape and a label-large label; cards use the 12px medium shape;
+ * dialogs use the 28px extra-large shape; menus use the 4px extra-small shape.
+ */
+
+/* --- Buttons --------------------------------------------------------- */
+.fi-body .fi-btn {
+    position: relative;
+    isolation: isolate;
+    min-height: 2.5rem;
+    padding-inline: 1.5rem;
+    padding-block: 0.5rem;
+    gap: 0.5rem;
+    border-radius: var(--md-shape-full);
+    border: 0;
+    box-shadow: none;
+    font-size: var(--md-label-lg-size);
+    line-height: var(--md-label-lg-line);
+    letter-spacing: var(--md-tracking-label-lg);
+    font-weight: 500;
+    text-transform: none;
+    transition:
+        background-color var(--md-duration-short) var(--md-ease-standard),
+        box-shadow var(--md-duration-short) var(--md-ease-standard),
+        color var(--md-duration-short) var(--md-ease-standard);
+}
+
+/* Shared state layer for every button variant. */
+.fi-body .fi-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(var(--md-btn-state, var(--md-state-on-surface)));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):hover::after {
+    opacity: var(--md-state-hover);
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):focus-visible::after {
+    opacity: var(--md-state-focus);
+}
+
+.fi-body .fi-btn:not(.fi-disabled):not([disabled]):active::after {
+    opacity: var(--md-state-pressed);
+}
+
+.fi-body .fi-btn > .fi-icon {
+    width: 1.125rem;
+    height: 1.125rem;
+}
+
+.fi-body .fi-btn.fi-size-xs,
+.fi-body .fi-btn.fi-size-sm {
+    min-height: 2rem;
+    padding-inline: 1rem;
+    font-size: var(--md-label-md-size);
+    line-height: var(--md-label-md-line);
+    letter-spacing: var(--md-tracking-label-md);
+}
+
+.fi-body .fi-btn.fi-size-lg {
+    min-height: 3rem;
+    padding-inline: 1.75rem;
+    font-size: var(--md-title-sm-size);
+}
+
+.fi-body .fi-btn.fi-size-xl {
+    min-height: 3.5rem;
+    padding-inline: 2rem;
+    font-size: var(--md-title-md-size);
+}
+
+/* Filled button — the default emphasis level in Material 3. */
+.fi-body .fi-btn.fi-color-primary:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-primary);
+    color: var(--md-on-primary);
+    --md-btn-state: 255 255 255;
+}
+
+.fi-body .fi-btn.fi-color-danger:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-error);
+    color: var(--md-on-error);
+    --md-btn-state: 255 255 255;
+}
+
+.fi-body .fi-btn.fi-color-success:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-success);
+    color: var(--md-on-success);
+    --md-btn-state: 255 255 255;
+}
+
+.fi-body .fi-btn.fi-color-warning:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-warning);
+    color: var(--md-on-warning);
+    --md-btn-state: 255 255 255;
+}
+
+.fi-body .fi-btn.fi-color-info:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-info);
+    color: var(--md-on-info);
+    --md-btn-state: 255 255 255;
+}
+
+/* Gray maps to Material's tonal button. */
+.fi-body .fi-btn.fi-color-gray:not(.fi-outlined):not(.fi-link) {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+}
+
+/* Outlined button — medium emphasis. */
+.fi-body .fi-btn.fi-outlined {
+    background-color: transparent;
+    border: 1px solid var(--md-outline);
+    box-shadow: none;
+}
+
+.fi-body .fi-btn.fi-outlined.fi-color-primary {
+    color: var(--md-primary);
+    --md-btn-state: var(--md-state-primary);
+}
+
+.fi-body .fi-btn.fi-outlined.fi-color-danger {
+    color: var(--md-error);
+}
+
+.fi-body .fi-btn.fi-outlined.fi-color-gray {
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-btn.fi-outlined:not(.fi-disabled):not([disabled]):focus-visible {
+    border-color: var(--md-primary);
+}
+
+/* Disabled: Material flattens the shape and drops opacity rather than
+   greying the colour, so the shape stays legible. */
+.fi-body .fi-btn.fi-disabled:not(.fi-force-enabled),
+.fi-body .fi-btn[disabled]:not(.fi-force-enabled) {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-disabled-container-opacity));
+    color: rgb(var(--md-state-on-surface) / var(--md-disabled-content-opacity));
+    border-color: transparent;
+    box-shadow: none;
+    opacity: 1;
+}
+
+.fi-body .fi-btn.fi-outlined.fi-disabled:not(.fi-force-enabled),
+.fi-body .fi-btn.fi-outlined[disabled]:not(.fi-force-enabled) {
+    background-color: transparent;
+    border-color: rgb(var(--md-state-on-surface) / var(--md-disabled-container-opacity));
+}
+
+.fi-body .fi-btn.fi-processing {
+    opacity: 0.75;
+}
+
+.fi-body .fi-btn-group {
+    border-radius: var(--md-shape-full);
+    box-shadow: none;
+    overflow: hidden;
+}
+
+.fi-body .fi-btn-group > .fi-btn {
+    border-radius: 0;
+}
+
+.fi-body .fi-btn-group > .fi-btn:first-child {
+    border-start-start-radius: var(--md-shape-full);
+    border-end-start-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-btn-group > .fi-btn:last-child {
+    border-start-end-radius: var(--md-shape-full);
+    border-end-end-radius: var(--md-shape-full);
+}
+
+/* --- Icon buttons ---------------------------------------------------- */
+.fi-body .fi-icon-btn {
+    position: relative;
+    isolation: isolate;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: var(--md-shape-full);
+    color: var(--md-on-surface-variant);
+    background-color: transparent;
+    border: 0;
+    box-shadow: none;
+    transition:
+        background-color var(--md-duration-short) var(--md-ease-standard),
+        color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-icon-btn::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(var(--md-state-on-surface));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.fi-body .fi-icon-btn:not(.fi-disabled):not([disabled]):hover::after {
+    opacity: var(--md-state-hover);
+}
+
+.fi-body .fi-icon-btn:not(.fi-disabled):not([disabled]):active::after {
+    opacity: var(--md-state-pressed);
+}
+
+.fi-body .fi-icon-btn.fi-color-primary {
+    color: var(--md-primary);
+}
+
+.fi-body .fi-icon-btn.fi-color-danger {
+    color: var(--md-error);
+}
+
+/* --- Cards (Filament sections) --------------------------------------- */
+.fi-body .fi-section {
+    background-color: var(--md-surface-container-lowest);
+    border: 0;
+    border-radius: var(--md-shape-md);
+    box-shadow: var(--md-elevation-1);
+    overflow: hidden;
+}
+
+.fi-body .fi-section.fi-section-not-contained {
+    background-color: transparent;
+    box-shadow: none;
+    border-radius: 0;
+}
+
+.fi-body .fi-section-header {
+    padding: 1.25rem 1.5rem;
+    border-block-end: 0;
+}
+
+.fi-body .fi-section.fi-section-has-header .fi-section-content {
+    padding-block-start: 0;
+}
+
+.fi-body .fi-section-content {
+    padding: 1.5rem;
+}
+
+.fi-body .fi-section-footer {
+    border-block-start: 1px solid var(--md-outline-variant);
+    background-color: transparent;
+}
+
+.fi-body .fi-section-collapse-btn {
+    border-radius: var(--md-shape-full);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-fieldset {
+    border: 1px solid var(--md-outline-variant);
+    border-radius: var(--md-shape-md);
+    background-color: transparent;
+}
+
+.fi-body .fi-fieldset-label-required-mark,
+.fi-body .fi-fo-field-label-required-mark {
+    color: var(--md-error);
+}
+
+/* --- Menus (dropdowns) ----------------------------------------------- */
+.fi-body .fi-dropdown-panel {
+    background-color: var(--md-surface-container);
+    border: 0;
+    border-radius: var(--md-shape-xs);
+    box-shadow: var(--md-elevation-2);
+    padding-block: 0.5rem;
+    overflow: hidden;
+}
+
+.fi-body .fi-dropdown-header {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-label-md-size);
+    line-height: var(--md-label-md-line);
+    letter-spacing: var(--md-tracking-label-md);
+    font-weight: 500;
+    padding: 0.5rem 0.75rem;
+}
+
+.fi-body .fi-dropdown-list {
+    padding: 0;
+    gap: 0;
+}
+
+/* Material menu items are 48px tall with 12px side padding. */
+.fi-body .fi-dropdown-list-item {
+    position: relative;
+    isolation: isolate;
+    min-height: 3rem;
+    padding-inline: 0.75rem;
+    border-radius: 0;
+    color: var(--md-on-surface);
+    background-color: transparent;
+    transition: background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-dropdown-list-item::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-color: rgb(var(--md-state-on-surface));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.fi-body .fi-dropdown-list-item:hover::after {
+    opacity: var(--md-state-hover);
+}
+
+.fi-body .fi-dropdown-list-item.fi-selected::after {
+    opacity: var(--md-state-focus);
+}
+
+.fi-body .fi-dropdown-list-item-label {
+    font-size: var(--md-label-lg-size);
+    line-height: var(--md-label-lg-line);
+    letter-spacing: var(--md-tracking-label-lg);
+    font-weight: 400;
+}
+
+.fi-body .fi-dropdown-list-item.fi-color-danger,
+.fi-body .fi-dropdown-list-item.fi-color-danger .fi-dropdown-list-item-label {
+    color: var(--md-error);
+}
+
+.fi-body .fi-dropdown-list-item .fi-icon {
+    color: var(--md-on-surface-variant);
+    width: 1.5rem;
+    height: 1.5rem;
+}
+
+/* --- Dialogs --------------------------------------------------------- */
+.fi-body .fi-modal-window {
+    background-color: var(--md-surface-container-high);
+    border: 0;
+    border-radius: var(--md-shape-xl);
+    box-shadow: var(--md-elevation-3);
+}
+
+.fi-body .fi-modal-window.fi-modal-slide-over {
+    border-radius: 0;
+    background-color: var(--md-surface-container-low);
+}
+
+.fi-body .fi-modal-header {
+    padding: 1.5rem 1.5rem 1rem;
+    border-block-end: 0;
+}
+
+.fi-body .fi-modal-heading {
+    font-size: var(--md-headline-sm-size);
+    line-height: var(--md-headline-sm-line);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-modal-description {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-modal-content {
+    padding-inline: 1.5rem;
+}
+
+.fi-body .fi-modal-footer {
+    padding: 1.5rem;
+    border-block-start: 0;
+    background-color: transparent;
+}
+
+.fi-body .fi-modal-close-overlay {
+    background-color: rgb(var(--md-scrim) / 0.32);
+}
+
+/* --- Chips (badges) -------------------------------------------------- */
+.fi-body .fi-badge {
+    border-radius: var(--md-shape-sm);
+    border: 0;
+    box-shadow: none;
+    padding-inline: 0.75rem;
+    padding-block: 0.25rem;
+    font-size: var(--md-label-md-size);
+    line-height: var(--md-label-md-line);
+    letter-spacing: var(--md-tracking-label-md);
+    font-weight: 500;
+    text-transform: none;
+}
+
+.fi-body .fi-badge.fi-color-primary {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+.fi-body .fi-badge.fi-color-success {
+    background-color: var(--md-success-container);
+    color: var(--md-on-success-container);
+}
+
+.fi-body .fi-badge.fi-color-danger {
+    background-color: var(--md-error-container);
+    color: var(--md-on-error-container);
+}
+
+.fi-body .fi-badge.fi-color-warning {
+    background-color: var(--md-warning-container);
+    color: var(--md-on-warning-container);
+}
+
+.fi-body .fi-badge.fi-color-info {
+    background-color: var(--md-info-container);
+    color: var(--md-on-info-container);
+}
+
+.fi-body .fi-badge.fi-color-gray {
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-badge-delete-btn {
+    color: currentColor;
+    opacity: 0.7;
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-badge-delete-btn:hover {
+    opacity: 1;
+}
+
+/* --- Avatars --------------------------------------------------------- */
+.fi-body .fi-avatar,
+.fi-body .fi-user-avatar,
+.fi-body .fi-tenant-avatar {
+    border-radius: var(--md-shape-full);
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+}
+
+.fi-body .fi-tenant-menu-trigger {
+    border-radius: var(--md-shape-full);
+    border: 1px solid var(--md-outline-variant);
+    background-color: transparent;
+}
+
+.fi-body .fi-tenant-menu-trigger-text {
+    font-size: var(--md-label-lg-size);
+    font-weight: 500;
+    color: var(--md-on-surface);
+}

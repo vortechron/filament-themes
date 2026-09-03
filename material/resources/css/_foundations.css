@@ -1,0 +1,132 @@
+/*
+ * Foundations: type scale, page surfaces, focus handling and the reusable
+ * state-layer helper every interactive component builds on.
+ */
+
+.fi-body {
+    font-family: var(--md-font);
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    background-color: var(--md-surface-container-low);
+    color: var(--md-on-surface);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.fi-body .fi-main-ctn {
+    background-color: var(--md-surface-container-low);
+}
+
+.fi-body .fi-main {
+    background-color: transparent;
+}
+
+/* Material 3 headline / title scale for page and section headings. */
+.fi-body .fi-header-heading {
+    font-size: var(--md-headline-sm-size);
+    line-height: var(--md-headline-sm-line);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-header-subheading {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-section-header-heading {
+    font-size: var(--md-title-md-size);
+    line-height: var(--md-title-md-line);
+    letter-spacing: var(--md-tracking-title-md);
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-section-header-description {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    color: var(--md-on-surface-variant);
+}
+
+/*
+ * The state layer.
+ *
+ * Material 3 does not darken a component on hover; it paints a translucent
+ * tint of the "on" colour on top of it. Components opt in by setting
+ * --md-state-color and using ::after as the layer.
+ */
+.md-state-layer {
+    position: relative;
+    isolation: isolate;
+}
+
+.md-state-layer::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background-color: rgb(var(--md-state-color, var(--md-state-on-surface)));
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity var(--md-duration-short) var(--md-ease-standard);
+    z-index: -1;
+}
+
+.md-state-layer:hover::after {
+    opacity: var(--md-state-hover);
+}
+
+.md-state-layer:focus-visible::after {
+    opacity: var(--md-state-focus);
+}
+
+.md-state-layer:active::after {
+    opacity: var(--md-state-pressed);
+}
+
+/* Material 3 focus indicator: a 3px outline offset away from the shape. */
+.fi-body :focus-visible {
+    outline: 3px solid var(--md-primary);
+    outline-offset: 2px;
+    border-radius: inherit;
+}
+
+.fi-body .fi-link {
+    color: var(--md-primary);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-link:hover {
+    text-decoration: underline;
+    text-underline-offset: 3px;
+}
+
+.fi-body .fi-prose :is(h1, h2, h3, h4) {
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+.fi-body .fi-loading-indicator {
+    color: var(--md-primary);
+}
+
+.fi-body .fi-skip-link:focus {
+    background-color: var(--md-primary-container);
+    color: var(--md-on-primary-container);
+    border-radius: var(--md-shape-sm);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fi-body *,
+    .fi-body *::before,
+    .fi-body *::after {
+        transition-duration: 1ms !important;
+        animation-duration: 1ms !important;
+    }
+}

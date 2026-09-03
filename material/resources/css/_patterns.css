@@ -1,0 +1,130 @@
+/*
+ * Page patterns: the simple (login) layout, dashboard widgets and charts.
+ */
+
+/* --- Simple layout: login, register, password reset -------------------- */
+.fi-body .fi-simple-layout {
+    background-color: var(--md-surface-container-low);
+}
+
+.fi-body .fi-simple-main {
+    background-color: var(--md-surface-container-lowest);
+    border: 0;
+    border-radius: var(--md-shape-xl);
+    box-shadow: var(--md-elevation-2);
+    padding: 2rem;
+}
+
+.fi-body .fi-simple-header-heading {
+    font-size: var(--md-headline-sm-size);
+    line-height: var(--md-headline-sm-line);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-simple-header-subheading {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-logo {
+    color: var(--md-primary);
+    font-weight: 500;
+    letter-spacing: 0;
+}
+
+/* --- Stats widgets ------------------------------------------------------ */
+.fi-body .fi-wi-stats-overview-stat {
+    background-color: var(--md-surface-container-lowest);
+    border: 0;
+    border-radius: var(--md-shape-md);
+    box-shadow: var(--md-elevation-1);
+    padding: 1.25rem 1.5rem;
+    transition: box-shadow var(--md-duration-medium) var(--md-ease-standard);
+}
+
+.fi-body .fi-wi-stats-overview-stat:hover {
+    box-shadow: var(--md-elevation-2);
+}
+
+.fi-body .fi-wi-stats-overview-stat-label {
+    font-size: var(--md-title-sm-size);
+    line-height: var(--md-title-sm-line);
+    font-weight: 500;
+    letter-spacing: 0.00714em;
+    color: var(--md-on-surface-variant);
+}
+
+/* The headline role is what makes a Material stat read as a number first. */
+.fi-body .fi-wi-stats-overview-stat-value {
+    font-size: var(--md-headline-md-size);
+    line-height: var(--md-headline-md-line);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-wi-stats-overview-stat-description {
+    font-size: var(--md-body-sm-size);
+    line-height: var(--md-body-sm-line);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-wi-stats-overview-stat.fi-color-success .fi-wi-stats-overview-stat-description {
+    color: var(--md-success);
+}
+
+.fi-body .fi-wi-stats-overview-stat.fi-color-danger .fi-wi-stats-overview-stat-description {
+    color: var(--md-error);
+}
+
+/* --- Charts -------------------------------------------------------------- */
+.fi-body .fi-wi-chart {
+    background-color: var(--md-surface-container-lowest);
+    border: 0;
+    border-radius: var(--md-shape-md);
+    box-shadow: var(--md-elevation-1);
+}
+
+/* Filament reads these colours off the DOM to configure Chart.js. */
+.fi-body .fi-wi-chart-bg-color {
+    color: color-mix(in srgb, var(--md-primary) 24%, transparent);
+}
+
+.fi-body .fi-wi-chart-border-color {
+    color: var(--md-primary);
+}
+
+.fi-body .fi-wi-chart-grid-color {
+    color: var(--md-outline-variant);
+}
+
+.fi-body .fi-wi-chart-text-color {
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-wi-stats-overview-stat-chart-bg-color {
+    color: color-mix(in srgb, var(--md-primary) 24%, transparent);
+}
+
+.fi-body .fi-wi-stats-overview-stat-chart-border-color {
+    color: var(--md-primary);
+}
+
+/* --- Page shell ---------------------------------------------------------- */
+.fi-body .fi-page-main,
+.fi-body .fi-page {
+    background-color: transparent;
+}
+
+.fi-body .fi-sc-text {
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-body-md-size);
+}
+
+/* Material keeps a divided list flush, with dividers in outline-variant. */
+.fi-body .fi-divided > * + * {
+    border-color: var(--md-outline-variant);
+}

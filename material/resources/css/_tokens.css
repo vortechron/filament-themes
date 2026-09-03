@@ -1,0 +1,158 @@
+/*
+ * Material 3 design tokens.
+ *
+ * Values follow the public Material Design 3 specification (m3.material.io):
+ * the baseline tonal colour scheme, the type scale, the shape scale, the
+ * elevation levels, the state-layer opacities and the standard motion easing.
+ * Every token is namespaced with --md- so it cannot collide with Filament's
+ * own custom properties.
+ */
+
+:root {
+    /* --- Baseline colour scheme, light ------------------------------ */
+    --md-primary: #6750a4;
+    --md-on-primary: #ffffff;
+    --md-primary-container: #eaddff;
+    --md-on-primary-container: #21005d;
+
+    --md-secondary: #625b71;
+    --md-on-secondary: #ffffff;
+    --md-secondary-container: #e8def8;
+    --md-on-secondary-container: #1d192b;
+
+    --md-tertiary: #7d5260;
+    --md-on-tertiary: #ffffff;
+    --md-tertiary-container: #ffd8e4;
+    --md-on-tertiary-container: #31111d;
+
+    --md-error: #b3261e;
+    --md-on-error: #ffffff;
+    --md-error-container: #f9dedc;
+    --md-on-error-container: #410e0b;
+
+    --md-success: #2e6b4f;
+    --md-on-success: #ffffff;
+    --md-success-container: #b6f2d0;
+    --md-on-success-container: #002114;
+
+    --md-warning: #7a5900;
+    --md-on-warning: #ffffff;
+    --md-warning-container: #ffdf9a;
+    --md-on-warning-container: #261a00;
+
+    --md-info: #00629e;
+    --md-on-info: #ffffff;
+    --md-info-container: #cfe5ff;
+    --md-on-info-container: #001d34;
+
+    --md-surface: #fef7ff;
+    --md-on-surface: #1d1b20;
+    --md-surface-variant: #e7e0ec;
+    --md-on-surface-variant: #49454f;
+
+    --md-surface-dim: #ded8e1;
+    --md-surface-bright: #fef7ff;
+    --md-surface-container-lowest: #ffffff;
+    --md-surface-container-low: #f7f2fa;
+    --md-surface-container: #f3edf7;
+    --md-surface-container-high: #ece6f0;
+    --md-surface-container-highest: #e6e0e9;
+
+    --md-outline: #79747e;
+    --md-outline-variant: #cac4d0;
+
+    --md-inverse-surface: #322f35;
+    --md-inverse-on-surface: #f5eff7;
+    --md-inverse-primary: #d0bcff;
+
+    --md-scrim: 0 0 0;
+    --md-shadow: 0 0 0;
+
+    /* State-layer tint, expressed as an RGB triplet so it can be mixed. */
+    --md-state-on-surface: 29 27 32;
+    --md-state-primary: 103 80 164;
+
+    /* --- State-layer opacities -------------------------------------- */
+    --md-state-hover: 0.08;
+    --md-state-focus: 0.1;
+    --md-state-pressed: 0.1;
+    --md-state-dragged: 0.16;
+    --md-disabled-content-opacity: 0.38;
+    --md-disabled-container-opacity: 0.12;
+
+    /* --- Shape scale ------------------------------------------------ */
+    --md-shape-none: 0px;
+    --md-shape-xs: 4px;
+    --md-shape-sm: 8px;
+    --md-shape-md: 12px;
+    --md-shape-lg: 16px;
+    --md-shape-xl: 28px;
+    --md-shape-full: 9999px;
+
+    /* --- Elevation -------------------------------------------------- */
+    --md-elevation-0: none;
+    --md-elevation-1:
+        0 1px 2px 0 rgb(var(--md-shadow) / 0.3),
+        0 1px 3px 1px rgb(var(--md-shadow) / 0.15);
+    --md-elevation-2:
+        0 1px 2px 0 rgb(var(--md-shadow) / 0.3),
+        0 2px 6px 2px rgb(var(--md-shadow) / 0.15);
+    --md-elevation-3:
+        0 1px 3px 0 rgb(var(--md-shadow) / 0.3),
+        0 4px 8px 3px rgb(var(--md-shadow) / 0.15);
+    --md-elevation-4:
+        0 2px 3px 0 rgb(var(--md-shadow) / 0.3),
+        0 6px 10px 4px rgb(var(--md-shadow) / 0.15);
+    --md-elevation-5:
+        0 4px 4px 0 rgb(var(--md-shadow) / 0.3),
+        0 8px 12px 6px rgb(var(--md-shadow) / 0.15);
+
+    /* --- Motion ----------------------------------------------------- */
+    --md-ease-standard: cubic-bezier(0.2, 0, 0, 1);
+    --md-ease-emphasized: cubic-bezier(0.2, 0, 0, 1);
+    --md-ease-decelerate: cubic-bezier(0.05, 0.7, 0.1, 1);
+    --md-ease-accelerate: cubic-bezier(0.3, 0, 0.8, 0.15);
+    --md-duration-short: 150ms;
+    --md-duration-medium: 250ms;
+    --md-duration-long: 400ms;
+
+    /* --- Type scale ------------------------------------------------- */
+    --md-font: 'Roboto', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+    --md-display-lg-size: 3.5625rem;
+    --md-display-lg-line: 4rem;
+    --md-headline-lg-size: 2rem;
+    --md-headline-lg-line: 2.5rem;
+    --md-headline-md-size: 1.75rem;
+    --md-headline-md-line: 2.25rem;
+    --md-headline-sm-size: 1.5rem;
+    --md-headline-sm-line: 2rem;
+    --md-title-lg-size: 1.375rem;
+    --md-title-lg-line: 1.75rem;
+    --md-title-md-size: 1rem;
+    --md-title-md-line: 1.5rem;
+    --md-title-sm-size: 0.875rem;
+    --md-title-sm-line: 1.25rem;
+    --md-body-lg-size: 1rem;
+    --md-body-lg-line: 1.5rem;
+    --md-body-md-size: 0.875rem;
+    --md-body-md-line: 1.25rem;
+    --md-body-sm-size: 0.75rem;
+    --md-body-sm-line: 1rem;
+    --md-label-lg-size: 0.875rem;
+    --md-label-lg-line: 1.25rem;
+    --md-label-md-size: 0.75rem;
+    --md-label-md-line: 1rem;
+    --md-label-sm-size: 0.6875rem;
+    --md-label-sm-line: 1rem;
+
+    --md-tracking-title-md: 0.009375em;
+    --md-tracking-label-lg: 0.00625em;
+    --md-tracking-body-md: 0.015625em;
+    --md-tracking-label-md: 0.03125em;
+
+    /* --- Layout ----------------------------------------------------- */
+    --md-topbar-height: 4rem;
+    --md-nav-item-height: 3.5rem;
+    --md-density: 0px;
+}

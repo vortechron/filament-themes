@@ -1,14 +1,14 @@
 /*
- * Custom Boron theme entrypoint.
+ * Custom Ripe theme entrypoint.
  *
  * Publish this file with:
- *   php artisan vendor:publish --tag=filament-boron-theme
+ *   php artisan vendor:publish --tag=filament-ripe-theme
  *
  * Then register it on the panel and build it with Vite:
- *   ->viteTheme('resources/css/filament/boron/theme.css')
+ *   ->viteTheme('resources/css/filament/ripe/theme.css')
  */
 @import '../../../../vendor/filament/filament/resources/css/theme.css';
-@import './boron.css';
+@import './ripe.css';
 
 @source '../../../../app/Filament/**/*';
 @source '../../../../resources/views/filament/**/*';

@@ -1,0 +1,10 @@
+/*
+ * Standalone build entrypoint for resources/dist/theme.css.
+ *
+ * This is what ships as the prebuilt drop-in stylesheet. It is loaded AFTER
+ * Filament's own compiled CSS in the panel, so it does NOT import Filament
+ * core and only contains our plain CSS component overrides.
+ *
+ * The real source of truth for the overrides is ./_overrides.css.
+ */
+@import './_overrides.css';

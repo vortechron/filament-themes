@@ -1,0 +1,85 @@
+/*
+ * Material 3 baseline dark colour scheme.
+ *
+ * Only the colour tokens change. Shape, elevation, motion and type are shared
+ * with light mode, which is how Material 3 defines a scheme pair.
+ */
+
+.dark .fi-body {
+    color-scheme: dark;
+
+    --md-primary: #d0bcff;
+    --md-on-primary: #381e72;
+    --md-primary-container: #4f378b;
+    --md-on-primary-container: #eaddff;
+
+    --md-secondary: #ccc2dc;
+    --md-on-secondary: #332d41;
+    --md-secondary-container: #4a4458;
+    --md-on-secondary-container: #e8def8;
+
+    --md-tertiary: #efb8c8;
+    --md-on-tertiary: #492532;
+    --md-tertiary-container: #633b48;
+    --md-on-tertiary-container: #ffd8e4;
+
+    --md-error: #f2b8b5;
+    --md-on-error: #601410;
+    --md-error-container: #8c1d18;
+    --md-on-error-container: #f9dedc;
+
+    --md-success: #9ad6b5;
+    --md-on-success: #00391f;
+    --md-success-container: #14512f;
+    --md-on-success-container: #b6f2d0;
+
+    --md-warning: #e9c26b;
+    --md-on-warning: #3f2e00;
+    --md-warning-container: #5c4300;
+    --md-on-warning-container: #ffdf9a;
+
+    --md-info: #9acbff;
+    --md-on-info: #003257;
+    --md-info-container: #00497c;
+    --md-on-info-container: #cfe5ff;
+
+    --md-surface: #141218;
+    --md-on-surface: #e6e0e9;
+    --md-surface-variant: #49454f;
+    --md-on-surface-variant: #cac4d0;
+
+    --md-surface-dim: #141218;
+    --md-surface-bright: #3b383e;
+    --md-surface-container-lowest: #0f0d13;
+    --md-surface-container-low: #1d1b20;
+    --md-surface-container: #211f26;
+    --md-surface-container-high: #2b2930;
+    --md-surface-container-highest: #36343b;
+
+    --md-outline: #938f99;
+    --md-outline-variant: #49454f;
+
+    --md-inverse-surface: #e6e0e9;
+    --md-inverse-on-surface: #322f35;
+    --md-inverse-primary: #6750a4;
+
+    --md-state-on-surface: 230 224 233;
+    --md-state-primary: 208 188 255;
+
+    /* Dark surfaces need a deeper drop shadow to stay readable. */
+    --md-elevation-1:
+        0 1px 2px 0 rgb(var(--md-shadow) / 0.6),
+        0 1px 3px 1px rgb(var(--md-shadow) / 0.35);
+    --md-elevation-2:
+        0 1px 2px 0 rgb(var(--md-shadow) / 0.6),
+        0 2px 6px 2px rgb(var(--md-shadow) / 0.35);
+    --md-elevation-3:
+        0 1px 3px 0 rgb(var(--md-shadow) / 0.6),
+        0 4px 8px 3px rgb(var(--md-shadow) / 0.35);
+    --md-elevation-4:
+        0 2px 3px 0 rgb(var(--md-shadow) / 0.6),
+        0 6px 10px 4px rgb(var(--md-shadow) / 0.35);
+    --md-elevation-5:
+        0 4px 4px 0 rgb(var(--md-shadow) / 0.6),
+        0 8px 12px 6px rgb(var(--md-shadow) / 0.35);
+}

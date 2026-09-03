@@ -23,6 +23,7 @@
         "psr-4": {
             "Vortechron\\FilamentBoron\\": "boron/src/",
             "Vortechron\\FilamentHasnayeen\\": "hasnayeen/src/",
+            "Vortechron\\FilamentMaterial\\": "material/src/",
             "Vortechron\\FilamentRipe\\": "ripe/src/"
         }
     },
@@ -31,6 +32,7 @@
             "providers": [
                 "Vortechron\\FilamentBoron\\BoronServiceProvider",
                 "Vortechron\\FilamentHasnayeen\\HasnayeenServiceProvider",
+                "Vortechron\\FilamentMaterial\\MaterialServiceProvider",
                 "Vortechron\\FilamentRipe\\RipeServiceProvider"
             ]
         }

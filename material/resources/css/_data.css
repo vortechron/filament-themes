@@ -1,0 +1,238 @@
+/*
+ * Data display: tables, pagination and infolist entries.
+ *
+ * Material 3 data tables use a 56px header row, 52px data rows, hairline
+ * dividers in outline-variant, and a state layer on row hover rather than a
+ * solid background swap.
+ */
+
+.fi-body .fi-ta-ctn {
+    background-color: var(--md-surface-container-lowest);
+    border: 0;
+    border-radius: var(--md-shape-md);
+    box-shadow: var(--md-elevation-1);
+    overflow: hidden;
+}
+
+.fi-body .fi-ta-header-ctn {
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+}
+
+.fi-body .fi-ta-header {
+    padding: 1.25rem 1.5rem;
+}
+
+.fi-body .fi-ta-header-heading {
+    font-size: var(--md-title-lg-size);
+    line-height: var(--md-title-lg-line);
+    font-weight: 400;
+    letter-spacing: 0;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-ta-header-description {
+    font-size: var(--md-body-md-size);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-ta-header-toolbar {
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+    padding: 0.75rem 1rem;
+}
+
+/* --- Header row ------------------------------------------------------- */
+.fi-body .fi-ta-header-cell {
+    height: 3.5rem;
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+    color: var(--md-on-surface-variant);
+    font-size: var(--md-title-sm-size);
+    line-height: var(--md-title-sm-line);
+    font-weight: 500;
+    letter-spacing: 0.00714em;
+    text-transform: none;
+    padding-inline: 1rem;
+}
+
+.fi-body .fi-ta-header-cell-sort-btn {
+    color: inherit;
+    gap: 0.25rem;
+    border-radius: var(--md-shape-xs);
+}
+
+.fi-body .fi-ta-header-cell-sort-btn:hover {
+    color: var(--md-on-surface);
+}
+
+/* --- Data rows -------------------------------------------------------- */
+.fi-body .fi-ta-row {
+    position: relative;
+    background-color: transparent;
+    border-block-end: 1px solid var(--md-outline-variant);
+    transition: background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-ta-row:last-child {
+    border-block-end: 0;
+}
+
+.fi-body .fi-ta-row:hover {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-state-hover));
+}
+
+.fi-body .fi-ta-row.fi-selected {
+    background-color: var(--md-secondary-container);
+}
+
+.fi-body .fi-ta-cell {
+    height: 3.25rem;
+    padding-inline: 1rem;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-ta-text {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    letter-spacing: var(--md-tracking-body-md);
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-ta-text-description {
+    font-size: var(--md-body-sm-size);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-ta-image {
+    border-radius: var(--md-shape-sm);
+}
+
+.fi-body .fi-ta-placeholder {
+    color: var(--md-on-surface-variant);
+    opacity: 0.7;
+}
+
+/* --- Grouping and summaries ------------------------------------------- */
+.fi-body .fi-ta-group-header-row {
+    background-color: var(--md-surface-container);
+}
+
+.fi-body .fi-ta-group-heading {
+    font-size: var(--md-title-sm-size);
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-ta-group-description {
+    font-size: var(--md-body-sm-size);
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-ta-summary-row {
+    background-color: var(--md-surface-container);
+}
+
+.fi-body .fi-ta-summary-row-heading-cell {
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-ta-selection-indicator {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+}
+
+.fi-body .fi-ta-filters,
+.fi-body .fi-ta-filters-dropdown,
+.fi-body .fi-ta-col-manager,
+.fi-body .fi-ta-grouping-settings,
+.fi-body .fi-ta-sorting-settings {
+    background-color: var(--md-surface-container);
+    border-color: var(--md-outline-variant);
+    border-radius: var(--md-shape-md);
+}
+
+/* --- Empty state ------------------------------------------------------ */
+.fi-body .fi-ta-empty-state,
+.fi-body .fi-empty-state {
+    padding-block: 3rem;
+}
+
+.fi-body .fi-ta-empty-state-icon-bg,
+.fi-body .fi-empty-state-icon-bg {
+    background-color: var(--md-surface-container-highest);
+    color: var(--md-on-surface-variant);
+    border-radius: var(--md-shape-full);
+}
+
+.fi-body .fi-empty-state-heading {
+    font-size: var(--md-title-md-size);
+    line-height: var(--md-title-md-line);
+    font-weight: 500;
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-empty-state-description {
+    font-size: var(--md-body-md-size);
+    color: var(--md-on-surface-variant);
+}
+
+/* --- Pagination -------------------------------------------------------- */
+.fi-body .fi-pagination {
+    border-block-start: 1px solid var(--md-outline-variant);
+    padding: 0.75rem 1rem;
+    background-color: transparent;
+}
+
+.fi-body .fi-pagination-item-btn,
+.fi-body .fi-pagination-previous-btn,
+.fi-body .fi-pagination-next-btn {
+    border-radius: var(--md-shape-full);
+    border: 0;
+    background-color: transparent;
+    color: var(--md-on-surface-variant);
+    min-width: 2.5rem;
+    min-height: 2.5rem;
+    font-size: var(--md-label-lg-size);
+    font-weight: 500;
+    box-shadow: none;
+    transition: background-color var(--md-duration-short) var(--md-ease-standard);
+}
+
+.fi-body .fi-pagination-item-btn:hover,
+.fi-body .fi-pagination-previous-btn:hover,
+.fi-body .fi-pagination-next-btn:hover {
+    background-color: rgb(var(--md-state-on-surface) / var(--md-state-hover));
+}
+
+.fi-body .fi-pagination-item.fi-active .fi-pagination-item-btn,
+.fi-body .fi-pagination-item-btn[aria-current='page'] {
+    background-color: var(--md-secondary-container);
+    color: var(--md-on-secondary-container);
+}
+
+/* --- Infolists --------------------------------------------------------- */
+.fi-body .fi-in-entry-label {
+    font-size: var(--md-body-sm-size);
+    line-height: var(--md-body-sm-line);
+    font-weight: 500;
+    color: var(--md-on-surface-variant);
+}
+
+.fi-body .fi-in-entry-content {
+    font-size: var(--md-body-md-size);
+    line-height: var(--md-body-md-line);
+    color: var(--md-on-surface);
+}
+
+.fi-body .fi-in-image {
+    border-radius: var(--md-shape-sm);
+}
+
+.fi-body .fi-in-repeatable-item,
+.fi-body .fi-in-key-value,
+.fi-body .fi-in-table-repeatable {
+    border-radius: var(--md-shape-md);
+    border-color: var(--md-outline-variant);
+}
