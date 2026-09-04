@@ -4,17 +4,11 @@ Four production-ready theme packages for **Filament 5**.
 
 ## Start here: pick one theme
 
-Install this private repository once. It contains all four packages, but you
+Install this repository once. It contains all four packages, but you
 activate **exactly one** in each Filament panel.
 
-This repository is private, so Composer needs a GitHub token before it can read
-it. Create a token with the **`repo`** scope, then run this once per machine:
-
-```bash
-composer config --global github-oauth.github.com YOUR_GITHUB_TOKEN
-```
-
-Then add the repository and install the release:
+The repository is public, so Composer needs no token. Add the repository and
+install the release:
 
 ```bash
 composer config repositories.vortechron-filament-themes vcs https://github.com/vortechron/filament-themes.git
@@ -127,19 +121,7 @@ composer require vortechron/filament-themes:^1.0
 To track the branch instead of a release, use
 `composer require vortechron/filament-themes:dev-main`.
 
-Your deployment environment also needs read access to this private repository.
-Do not commit a token. Write `auth.json` next to `composer.json` at deploy time
-and keep it out of git:
-
-```json
-{
-    "github-oauth": {
-        "github.com": "YOUR_GITHUB_TOKEN"
-    }
-}
-```
-
-Add `auth.json` to the application's `.gitignore`.
+Deployment environments and CI need no credentials for this package.
 
 Use the panel registration and setup commands in [Start here: pick one theme](#start-here-pick-one-theme).
 
