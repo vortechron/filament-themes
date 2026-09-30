@@ -54,15 +54,20 @@
   color: var(--ripe-shell-body);
 }
 
+/* Plain icon buttons on the dark shell use `:not(.fi-color)` to outrank the
+   light-surface icon button rule in _components.css, which loads later. */
 .fi-body .fi-sidebar-item-icon,
 .fi-body .fi-sidebar-group-btn .fi-icon,
-.fi-body .fi-sidebar-group-collapse-btn {
+.fi-body .fi-sidebar-group-collapse-btn,
+.fi-body .fi-sidebar .fi-icon-btn:not(.fi-color) {
   color: var(--ripe-shell-muted);
 }
 
 .fi-body .fi-sidebar-item-btn:hover,
 .fi-body .fi-sidebar-item-btn:focus-visible,
-.fi-body .fi-sidebar-group-btn:hover {
+.fi-body .fi-sidebar-group-btn:hover,
+.fi-body .fi-sidebar .fi-icon-btn:not(.fi-color):hover,
+.fi-body .fi-sidebar .fi-icon-btn:not(.fi-color):focus-visible {
   background: var(--ripe-shell-hover);
   color: var(--ripe-shell-ink);
 }
@@ -173,7 +178,8 @@
 }
 
 .fi-body .fi-topbar-item-btn .fi-icon,
-.fi-body .fi-topbar .fi-icon-btn {
+.fi-body .fi-topbar .fi-icon-btn,
+.fi-body .fi-topbar .fi-icon-btn:not(.fi-color) {
   color: var(--ripe-shell-muted);
 }
 
@@ -185,7 +191,9 @@
 }
 
 .fi-body .fi-topbar .fi-icon-btn:hover,
-.fi-body .fi-topbar .fi-icon-btn:focus-visible {
+.fi-body .fi-topbar .fi-icon-btn:focus-visible,
+.fi-body .fi-topbar .fi-icon-btn:not(.fi-color):hover,
+.fi-body .fi-topbar .fi-icon-btn:not(.fi-color):focus-visible {
   background: var(--ripe-shell-hover);
   color: var(--ripe-shell-ink);
 }
