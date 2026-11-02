@@ -426,6 +426,121 @@
     box-shadow: var(--boron-card-shadow);
 }
 
+/* Branded sign-in pages: authBranding() adds .boron-auth-brand as the first
+   child of the simple layout (login, register, password reset). Beside the form
+   on wide screens, a banner above it on phones. */
+.fi-simple-layout:has(> .boron-auth-brand) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    min-height: 100dvh;
+    padding: 0;
+    background: var(--boron-body-bg);
+}
+
+.fi-simple-layout:has(> .boron-auth-brand) > :not(.boron-auth-brand) {
+    grid-column: 1;
+}
+
+.fi-simple-layout:has(> .boron-auth-brand) > .fi-simple-main-ctn {
+    align-items: flex-start;
+    padding: 2rem 1rem 3rem;
+}
+
+/* The brand panel already shows the name, so the form does not repeat it. */
+.fi-simple-layout:has(> .boron-auth-brand) .fi-simple-main .fi-logo {
+    display: none;
+}
+
+.boron-auth-brand {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 11rem;
+    padding: 1.75rem 1.5rem;
+    background: radial-gradient(circle at 18% 12%, rgb(102 151 118 / 0.45), transparent 22rem), var(--boron-primary);
+    color: #fffbf4;
+    border-bottom: 3px solid #000;
+}
+
+.boron-auth-brand__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.boron-auth-brand:has(.boron-auth-brand__image)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgb(0 0 0 / 0.78), rgb(0 0 0 / 0.15));
+}
+
+.boron-auth-brand__body {
+    max-width: 34rem;
+}
+
+.boron-auth-brand__heading {
+    margin: 0;
+    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 3rem);
+    line-height: 1.08;
+    text-wrap: balance;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+}
+
+.boron-auth-brand__description {
+    margin: 0.85rem 0 0;
+    font-size: 1rem;
+    line-height: 1.55;
+    opacity: 0.88;
+    text-wrap: pretty;
+}
+
+/* A sage block above the heading, in Boron's offset-shadow style. */
+.boron-auth-brand__body::before {
+    content: "";
+    display: block;
+    width: 3rem;
+    height: 0.6rem;
+    margin-bottom: 1.25rem;
+    border: 2px solid #000;
+    background: var(--boron-secondary);
+    box-shadow: 3px 3px 0 #000;
+}
+
+@media (min-width: 64rem) {
+    .fi-simple-layout:has(> .boron-auth-brand) {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    }
+
+    .fi-simple-layout:has(> .boron-auth-brand) > :not(.boron-auth-brand) {
+        grid-column: 2;
+    }
+
+    .fi-simple-layout:has(> .boron-auth-brand) > .fi-simple-main-ctn {
+        align-items: center;
+        padding: 2rem 3rem;
+    }
+
+    .boron-auth-brand {
+        position: sticky;
+        top: 0;
+        grid-row: 1;
+        height: 100dvh;
+        padding: 3.5rem;
+        border-bottom: 0;
+        border-right: 3px solid #000;
+    }
+}
+
 @media (prefers-reduced-motion: reduce) {
     *, *::before, *::after {
         transition-duration: 0.01ms !important;

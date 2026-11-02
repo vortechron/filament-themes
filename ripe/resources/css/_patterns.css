@@ -278,3 +278,103 @@
   width: 100%;
   justify-content: center;
 }
+
+/* Branded sign-in pages: authBranding() adds .ripe-auth-brand as the first
+   child of the simple layout (login, register, password reset). Beside the form
+   on wide screens, a banner above it on phones. */
+.fi-body .fi-simple-layout:has(> .ripe-auth-brand) {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    align-items: stretch;
+    min-height: 100dvh;
+    padding: 0;
+    background: var(--ripe-canvas);
+}
+
+.fi-body .fi-simple-layout:has(> .ripe-auth-brand) > :not(.ripe-auth-brand) {
+    grid-column: 1;
+}
+
+.fi-body .fi-simple-layout:has(> .ripe-auth-brand) > .fi-simple-main-ctn {
+    align-items: flex-start;
+    padding: 2rem 1rem 3rem;
+}
+
+/* The brand panel already shows the name, so the form does not repeat it. */
+.fi-body .fi-simple-layout:has(> .ripe-auth-brand) .fi-simple-main .fi-logo {
+    display: none;
+}
+
+.fi-body .ripe-auth-brand {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    min-height: 11rem;
+    padding: 1.75rem 1.5rem;
+    background: linear-gradient(135deg, var(--ripe-shell) 0%, #2b2a8f 52%, var(--ripe-primary) 100%);
+    color: #ffffff;
+}
+
+.fi-body .ripe-auth-brand__image {
+    position: absolute;
+    inset: 0;
+    z-index: -2;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.fi-body .ripe-auth-brand:has(.ripe-auth-brand__image)::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background: linear-gradient(to top, rgb(26 34 51 / 0.85), rgb(26 34 51 / 0.2));
+}
+
+.fi-body .ripe-auth-brand__body {
+    max-width: 34rem;
+}
+
+.fi-body .ripe-auth-brand__heading {
+    margin: 0;
+    font-size: clamp(1.6rem, 1.1rem + 2.2vw, 3rem);
+    line-height: 1.08;
+    text-wrap: balance;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.fi-body .ripe-auth-brand__description {
+    margin: 0.85rem 0 0;
+    font-size: 1rem;
+    line-height: 1.55;
+    opacity: 0.88;
+    text-wrap: pretty;
+}
+
+@media (min-width: 64rem) {
+    .fi-body .fi-simple-layout:has(> .ripe-auth-brand) {
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+    }
+
+    .fi-body .fi-simple-layout:has(> .ripe-auth-brand) > :not(.ripe-auth-brand) {
+        grid-column: 2;
+    }
+
+    .fi-body .fi-simple-layout:has(> .ripe-auth-brand) > .fi-simple-main-ctn {
+        align-items: center;
+        padding: 2rem 3rem;
+    }
+
+    .fi-body .ripe-auth-brand {
+        position: sticky;
+        top: 0;
+        grid-row: 1;
+        height: 100dvh;
+        padding: 3.5rem;
+    }
+}

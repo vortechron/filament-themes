@@ -122,6 +122,11 @@ for theme in "${VISUAL_THEMES[@]}"; do
     grep -Fq "${class}Theme::colors()" "$plugin" \
         || fail "$theme: ${class}Plugin must read its palette from ${class}Theme::colors()"
 
+    grep -Fq 'public function authBranding(?string $heading = null, ?string $description = null, ?string $image = null): static' "$plugin" \
+        || fail "${class}Plugin must expose authBranding()."
+    grep -Rqs "${theme}-auth-brand" "$dir/resources/css" \
+        || fail "${theme} CSS must style .${theme}-auth-brand."
+
     for method in withoutColors withoutStyles; do
         grep -Fq "public function ${method}(): static" "$plugin" \
             || fail "$theme: ${class}Plugin must expose ${method}()"

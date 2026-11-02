@@ -67,6 +67,24 @@ RipePlugin::make()
 Use `->withoutStyles()` only when you load a customized Ripe stylesheet
 yourself.
 
+### Branded sign-in pages
+
+The sign-in, sign-up and password pages show a centered card by default. Add a
+branded panel beside the form (a banner above it on phones):
+
+```php
+RipePlugin::make()
+    ->authBranding(
+        heading: 'Acme Store',                    // defaults to the panel brand name
+        description: 'Manage your store website.', // optional
+        image: asset('images/login.jpg'),          // optional, fills the panel
+    )
+```
+
+The panel replaces the brand name at the top of the form, so the name shows
+once. Text is escaped. The image sits behind a dark overlay so the text stays
+readable.
+
 ## Customize
 
 Ripe's design tokens are CSS variables. Override them in the application's

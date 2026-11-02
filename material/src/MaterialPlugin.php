@@ -9,6 +9,8 @@ use Filament\FontProviders\LocalFontProvider;
 use Filament\Panel;
 use Filament\Support\Assets\Css;
 use Filament\Support\Assets\Font;
+use Filament\View\PanelsRenderHook;
+use Illuminate\Support\HtmlString;
 
 /**
  * Material 3 theme plugin for Filament.
@@ -27,6 +29,11 @@ class MaterialPlugin implements Plugin
     protected bool $applyFont = true;
 
     protected bool $applyStyles = true;
+
+    /**
+     * @var array{heading: ?string, description: ?string, image: ?string}|null
+     */
+    protected ?array $authBranding = null;
 
     public static function make(): static
     {
@@ -68,8 +75,33 @@ class MaterialPlugin implements Plugin
         return $this;
     }
 
+    /**
+     * Show a branded panel beside the sign-in, sign-up and password pages.
+     * The heading defaults to the panel's brand name. The image is optional
+     * and fills the panel behind the text.
+     */
+    public function authBranding(?string $heading = null, ?string $description = null, ?string $image = null): static
+    {
+        $this->authBranding = [
+            'heading' => $heading,
+            'description' => $description,
+            'image' => $image,
+        ];
+
+        return $this;
+    }
+
     public function register(Panel $panel): void
     {
+        if ($this->authBranding !== null) {
+            $branding = $this->authBranding;
+
+            $panel->renderHook(
+                PanelsRenderHook::SIMPLE_LAYOUT_START,
+                fn (): HtmlString => $this->renderAuthBranding($branding),
+            );
+        }
+
         if ($this->applyColors) {
             $panel->colors(MaterialTheme::colors());
         }
@@ -93,6 +125,28 @@ class MaterialPlugin implements Plugin
                 Css::make('theme', __DIR__.'/../resources/dist/theme.css'),
             ], package: self::ASSET_PACKAGE);
         }
+    }
+
+    /**
+     * @param  array{heading: ?string, description: ?string, image: ?string}  $branding
+     */
+    protected function renderAuthBranding(array $branding): HtmlString
+    {
+        $heading = $branding['heading'] ?? filament()->getBrandName();
+        $html = '<aside class="material-auth-brand">';
+
+        if (filled($branding['image'])) {
+            $html .= '<img class="material-auth-brand__image" src="'.e($branding['image']).'" alt="">';
+        }
+
+        $html .= '<div class="material-auth-brand__body">';
+        $html .= '<p class="material-auth-brand__heading">'.e($heading).'</p>';
+
+        if (filled($branding['description'])) {
+            $html .= '<p class="material-auth-brand__description">'.e($branding['description']).'</p>';
+        }
+
+        return new HtmlString($html.'</div></aside>');
     }
 
     public function boot(Panel $panel): void

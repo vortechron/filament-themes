@@ -47,11 +47,13 @@ new_laravel_app() {
     }
 }
 
+# write_panel_provider <app dir> <plugin class> [plugin options, e.g. ->authBranding(...)]
 write_panel_provider() {
-    php -r '$source = file_get_contents($argv[1]); $source = str_replace("__PLUGIN_CLASS__", $argv[3], $source); file_put_contents($argv[2], $source);' \
+    php -r '$source = file_get_contents($argv[1]); $source = str_replace(["__PLUGIN_CLASS__", "__PLUGIN_OPTIONS__"], [$argv[3], $argv[4] ?? ""], $source); file_put_contents($argv[2], $source);' \
         "$repo_dir/tests/integration/AdminPanelProvider.php.stub" \
         "$1/app/Providers/Filament/AdminPanelProvider.php" \
-        "$2"
+        "$2" \
+        "${3:-}"
 }
 
 install_theme() {
@@ -71,7 +73,10 @@ install_theme() {
             --no-interaction --prefer-dist --quiet
 
         php artisan filament:install --panels --no-interaction >/dev/null
-        write_panel_provider "$app_dir" "$plugin_class"
+        # Visual themes run with authBranding() on, so the smoke test can check
+        # the branded sign-in panel and that its text is escaped.
+        write_panel_provider "$app_dir" "$plugin_class" \
+            "->authBranding(heading: 'Smoke <b>Brand</b>', description: 'Smoke description')"
 
         cp "$repo_dir/tests/integration/ThemePackageSmokeTest.php" \
             "$app_dir/tests/Feature/ThemePackageSmokeTest.php"

@@ -132,6 +132,7 @@ class {Theme}Plugin implements Plugin
     public function withoutColors(): static;   // always
     public function withoutFont(): static;     // only if the package bundles a font
     public function withoutStyles(): static;   // always
+    public function authBranding(?string $heading = null, ?string $description = null, ?string $image = null): static; // always
     public function register(Panel $panel): void;
     public function boot(Panel $panel): void;
 }
@@ -140,6 +141,10 @@ class {Theme}Plugin implements Plugin
 - Every `without*()` method sets a `protected bool $apply*` property and
   returns `$this`.
 - `register()` wraps each part in `if ($this->apply*)`.
+- `authBranding()` registers a `SIMPLE_LAYOUT_START` render hook that prints
+  `<aside class="{theme}-auth-brand">` with escaped text. Style it in the theme's
+  CSS with `.fi-simple-layout:has(> .{theme}-auth-brand)`, so pages without
+  branding keep the default centered card.
 - Never hardcode a colour inside `register()`. Read it from
   `{Theme}Theme::colors()`, which returns `array<string, string>` of hex values.
 - Only add `withoutFont()` when `resources/fonts/` exists. A toggle that turns

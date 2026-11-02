@@ -29,4 +29,16 @@ class ThemePackageSmokeTest extends TestCase
             );
         }
     }
+
+    public function test_login_page_shows_the_branded_panel_with_escaped_text(): void
+    {
+        $theme = str_replace('vortechron/filament-', '', (string) getenv('EXPECTED_THEME_ASSET'));
+
+        $this->get('/admin/login')
+            ->assertOk()
+            ->assertSee('class="'.$theme.'-auth-brand"', escape: false)
+            ->assertSee('Smoke &lt;b&gt;Brand&lt;/b&gt;', escape: false)
+            ->assertDontSee('Smoke <b>Brand</b>', escape: false)
+            ->assertSee('Smoke description');
+    }
 }

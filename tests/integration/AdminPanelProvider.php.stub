@@ -45,6 +45,6 @@ class AdminPanelProvider extends PanelProvider
             ->authMiddleware([
                 Authenticate::class,
             ])
-            ->plugin(\__PLUGIN_CLASS__::make());
+            ->plugin(\__PLUGIN_CLASS__::make()__PLUGIN_OPTIONS__);
     }
 }

@@ -96,6 +96,11 @@ Every theme follows the same naming convention:
 Laravel discovers each package service provider automatically. Applications
 only import the selected plugin class and add it to the target panel.
 
+Every visual theme (Boron, Ripe, Material) has the same options:
+`withoutColors()`, `withoutStyles()`, `withoutFont()` where the theme bundles a
+font, and `authBranding(heading, description, image)` for a branded panel
+beside the sign-in, sign-up and password pages.
+
 ## Use a tagged release in production
 
 `v1.0.0` is tagged. Add this repository to the Laravel application's
